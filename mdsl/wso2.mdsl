@@ -1,0 +1,191 @@
+
+package com.wso2.workshop ;
+
+
+connection locations {
+	operation init getMyLocations GET 'http://www.getcix.com/customers/wso2/locations.xml' {
+		protocol HTTP ; 
+	} ;
+	
+}
+
+connection twitter {
+	operation init getMyTweets GET 'http://twitter.com/statuses/user_timeline/wso2.xml' {
+		protocol HTTP ; 
+	} ;
+	
+}
+
+connection interaction {
+
+	operation submitAnswers POST 'http://data.stratoslive.wso2.com/services/t/canappi.com/ResponseService.SOAP11Endpoint/' userid question1 answer1 question2 answer2 question3 answer3 question4 answer4 question5 answer5 {
+		protocol SOAP soap11 SOAPAction 'createResponse' ; request 'createResponse' ; namespace 'http://ws.wso2.org/dataservice' ; 
+	} ;
+}
+
+mapping twitterMapping { {"tweet":"text"} } 
+
+
+native String as medium string ;
+native Number as medium string ;
+native Booelan as tiny int ;
+native Int as medium int ;
+
+
+
+entity Response {
+	userid String;
+	List by question1 String ;
+	answer1 Int;
+	List by question2 String ;
+	answer2 Int;
+	List by question3 String ;
+	answer3 Int;
+	List by question4 String ;
+	answer4 Int;
+	List by question5 String ;
+	answer5 Int;
+	
+}
+
+
+layout twitterRow {
+	label tweet '' (5,3,300,80) { color black ; Left ; lines 3 ; } 
+}
+
+layout twitterLayout {
+	table twitterTable {
+		twitterRow[] ;
+		rowHeight 80 ;
+	}
+}
+
+layout startTheSurvey {
+	button startSurvey (44, 42,232, 205) {
+		Bordered ; 
+		action startSurvey navigate to answerViews ;
+	}
+
+	image instructions (20, 275,280, 165) { }
+}
+
+
+
+layout questionsLayout {
+	label question1Label 'Question 1' (20, 45,280, 68) { Left ; lines 2; }
+	label question2Label 'Question 2' (20, 145,280, 68) { Left ; lines 2; }
+	label question3Label 'Question 3' (20, 245,280, 68) { Left ; lines 2; }
+	label question4Label 'Question 4' (20, 345,280, 68) { Left ; lines 2; }
+	label question5Label 'Question 5' (20, 445,280, 68) { Left ; lines 2; }
+
+	slider answer1 (40,115,240,30) { min 0 ; max 10 ; initialValue 5 ;  } 
+	slider answer2 (40,215,240,30) { min 0 ; max 10 ; initialValue 5 ; }
+	slider answer3 (40,315,240,30) { min 0 ; max 10 ; initialValue 5 ; }
+	slider answer4 (40,415,240,30) { min 0 ; max 10 ; initialValue 5 ; }
+	slider answer5 (40,515,240,30) { min 0 ; max 10 ; initialValue 5 ; }
+
+	button submit 'Submit ...' (40, 575,240, 40) {
+		Gradient SimpleOrange ; 
+		action submitAnswers   invokeOperation interaction submitAnswers ;
+	}
+
+
+}
+
+
+
+layout surveyLayout {
+	
+		image logo 'background' (9999,45) {
+			'start-survey-background.png' ;
+		}
+	
+		button startSurvey 'Start Survey' (130, 320,186, 87) {
+			Custom ;
+			image 'start-survey.png' ;
+			selectedImage 'start-survey-selected.png' ;
+			action startSurvey navigate to answerViews ;
+		}
+	
+	
+}
+
+
+
+layout locationLayout {
+	text lat  (-20,-20,100,30) { Left ;} 
+	text long (-20,-20,100,30) { Left ;} 
+	text name  (-20,-20,100,30) { Left ;} 
+	text address  (-20,-20,100,30) { Left ;} 
+	map renewalLocations {
+		area 90.0 , 90.0 ;
+		location 6.9319444 , 79.8477778  ("WSO2" , "Colombo, Sri Lanka")  ;
+	}
+}	
+
+layout aboutLayout {
+	web about {
+		load 'wso2';
+	}
+}	
+
+
+// Your View definitions 
+
+
+view answerViews   'Survey'  {
+	    scroll 700 bounces ;
+		color white ;
+		controls {
+			layout questionsLayout bindings interaction  ; 		}
+		icon 'survey.png';
+}
+
+
+view startSurveyView 'Start Survey' {
+
+		color white ;
+		controls {
+			layout surveyLayout ; 		}
+		icon 'survey.png';
+}
+
+view aboutUsView 'About Us' {
+
+		color white ;
+		controls {
+			layout aboutLayout ; 		}
+		icon 'about.png';
+}
+
+view twitterView '@wso2' {
+
+		color white ;
+		controls {
+			layout twitterLayout bindings twitter mapping twitterMapping ; 		}
+		icon 'twitter.png';
+}
+
+view locationView 'Locations' {
+
+		color white ;
+		controls {
+			layout locationLayout bindings locations ;		}
+		icon 'location.png';
+}
+
+
+// The Application Main Definition 
+
+
+main wso2 {
+
+		splashscreen 'scansurvey.png' ;
+		navigationBar ;
+		start startSurveyView ;
+		menu {  startSurveyView , aboutUsView , twitterView , locationView } 
+		
+		data { Response } 
+		
+}
+

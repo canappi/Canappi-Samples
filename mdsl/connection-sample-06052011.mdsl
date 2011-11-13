@@ -1,0 +1,102 @@
+package com.canappi.kitchensink.dataconnection ;
+
+connection contactsDataSource { 
+	
+	//This is an on board data source
+	//This data source can be bound to a table for instance
+		{ "contacts" : [ 
+			{ "contact" : [ 
+				{ "firstname" : "John" }, 
+				{ "lastname" : "Doe" }, 
+				{ "position" : "Director of Quality" }, 
+				{ "email" : "john.doe@somedomain.com" }	
+				]  
+			}
+		 	]   
+		}  ;
+}
+
+connection contactsXML {
+	operation init getContacts GET 'http://www.cloudsentinel.com/contacts.xml'{ 
+		};
+}
+
+connection contactsJSON {
+	operation init getContacts GET 'http://www.cloudsentinel.com/contacts.json'{ protocol HTTP ; json ;
+		};
+}
+
+connection canappiFBStatus { 
+	operation init getmyFBStatus GET 'http://graph.facebook.com/105776312835674/feed' {
+	  protocol HTTP ; json; resultSet 'data' ; 
+	} ;
+}
+
+connection canappiTutorials { 
+	operation init getmyTubes GET 'https://gdata.youtube.com/feeds/api/users/canappi/uploads' {
+		protocol ATOM ; resultSet 'feed' ('entry') ; 
+	} ;
+}
+
+connection canappiTweets { 
+	operation init getmyTweets GET 'http://twitter.com/statuses/user_timeline/metapgmr.xml' {
+		
+	} ;
+}
+
+mapping contactsMapping { {"status" : "text" }, {"name" : "user.name"} }
+	
+
+layout contactInformation stacked {
+	text status (20,5,280,25) { readOnly ;}
+	text name (,30,280,25) {readOnly ;} ;
+}
+
+layout homeLayout stacked { 
+	table contactList{contactInformation[];
+		rowHeight 80;
+		action selectContact navigate to contactDetailsView;}
+}
+
+layout homeJSONLayout stacked { 
+	table contactListJSON {
+		contactInformation[];
+		rowHeight 80;
+		action selectContact navigate to contactDetailsView;}
+}
+
+layout contactDetailsLayout stacked { 
+	
+	label nameLabel 'Name' (10,55,60,25) {Left;}
+	label emailLabel 'Email' (10,85,60,25) {Left;}
+	text firstname  (100,55,150,25) {Left; border bezel;}
+	text email  (100,85,150,25) {Left; border bezel;}
+	
+}
+
+view jsonView 'JSON' uses user defaults {
+	color groupTableViewBackground ;
+	controls  {
+		layout homeJSONLayout bindings contactsJSON;	
+	}
+}
+
+view homeView 'XML' uses user defaults {
+	color groupTableViewBackground ;
+	controls  {
+		layout homeLayout bindings contactsXML;	
+	}
+}
+
+view contactDetailsView 'Contact Details' {
+	color groupTableViewBackground ;
+	controls  {
+    	layout contactDetailsLayout bindings contactsJSON ;
+     }
+}
+
+main DataConnection {
+	navigationBar ;
+	start homeView ;
+	menu {homeView, jsonView, contactDetailsView}
+}

@@ -1,0 +1,38 @@
+package com.canappi.connectors.twitter ;
+
+
+connection twitter {
+	operation init getMyTweets GET 'http://twitter.com/statuses/user_timeline/metapgmr.xml' {
+		protocol HTTP ; 
+	} ;
+	
+}
+
+mapping twitterMapping { {"tweet":"text"} } 
+
+layout twitterRow {
+	label tweet '' (5,10,300,50) { color blue ; Left ; lines 2 ; } 
+	 
+}
+
+layout twitterLayout {
+	table twitterTable {
+		twitterRow[] ;
+		rowHeight 60 ;
+	}
+}
+
+view twitterView 'Twitter' {
+	controls {
+		layout twitterLayout bindings twitter mapping twitterMapping ;
+	}
+	icon 'home.png' ;
+}
+
+
+main twitterapp {
+	splashscreen 'twitter.png' ;
+	navigationBar ;
+	start twitterView ;
+	menu { twitterView }
+}

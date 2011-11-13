@@ -1,0 +1,124 @@
+package twilio ;
+
+
+//Connections to the different Twilio APIs
+connection accounts { 
+	//Fetch Account information, the protocol is HTTP and the account information can be mapped automatically from the Accounts element
+	operation init getMyAccountInfo GET 'https://AC7ba71efb31a74271c2ffd48c63145991:d15240935d4454d0825b4a1dceea3415@api.twilio.com/2010-04-01/Accounts' {
+		protocol HTTP ;
+        resultSet 'Accounts' ;
+   } ;
+
+}
+
+connection SMS { 
+	//Sends an SMS providing the parameters: From, To, Body
+	operation sendSMS POST 'https://AC7ba71efb31a74271c2ffd48c63145991:d15240935d4454d0825b4a1dceea3415@api.twilio.com/2010-04-01/Accounts/AC7ba71efb31a74271c2ffd48c63145991/SMS/Messages' From To Body 
+	{
+		protocol HTTP ;  
+	} ;
+}	
+
+connection getSMSList { 
+	//Returns the list of SMSs for an account
+	operation init getSMSList GET 'https://AC7ba71efb31a74271c2ffd48c63145991:d15240935d4454d0825b4a1dceea3415@api.twilio.com/2010-04-01/Accounts/AC7ba71efb31a74271c2ffd48c63145991/SMS/Messages' 
+	{
+		protocol HTTP ;  
+		resultSet 'SMSMessages' ;
+	} ;
+	
+}	
+
+native String medium string ;
+native String2 medium string ;
+
+entity Customer {
+	name String ;
+}
+
+//Layout Definitions
+layout accountInformation stacked {
+	//The controls names map to the Twilio XML response elements
+	text FriendlyName (20,5,280,25) { readOnly ;}
+	text Sid (,35,280,25) {readOnly ;} 
+	text DateCreated (,65,280,25) {readOnly ;}
+	text DateUpdated (,95,280,25) {readOnly ;}
+	text Status (,125,100,25) {readOnly ;}
+	text Type (160,125,100,25) {readOnly ;}
+}
+
+layout accountsLayout stacked { 
+	table accountList{
+		accountInformation[];
+		rowHeight 190;
+	}
+}
+
+layout smsLayout  {
+	//Send SMS Layout, the controls are named to match the API parameters: From, To and Body
+	picker  From 'From...' (80,60,200,25) { 		
+		components 1 ; 
+		rows 1 ;
+		data [ [ '+14252426513' ]  ] ;
+	} 
+	label fromLabel 'From:' (20,60,60,30) {color white ; Right ;}
+	label toLabel 'To:' (20,120,60,30) {color white ; Right ;}
+	label smsLabel 'Text:' (20,160,60,30) {color white ; Right ;}
+	text To (80,120,200,25) {backgroundColor clear; Left ;  placeholder 'To ...' ; border rounded ;}
+	text Body (80,160,200,25) { backgroundColor clear; Left ; placeholder 'Body ...' ; border rounded ;} 
+	button send 'Send' (80,220,160,40)  {
+		Gradient RedDelete ; 
+		action sendSMS invokeOperation SMS sendSMS; 
+	}
+}
+
+layout sms stacked {
+	//Display a row in the SMS List table
+	//The controls names map to the Twilio XML response elements
+	text DateSent (20,5,200,25) { readOnly ;}
+	text To (,35,280,25) {readOnly ;} 
+	text From (,65,200,25) {readOnly ;}
+	text Body (,95,200,25) {readOnly ;}
+	text Status (230,5,100,25) {readOnly ;}
+	text Price (230,35,100,25) {readOnly ;}
+}
+
+layout smsList  { 
+	table smsList{
+		sms[];
+		rowHeight 130;
+	}
+}
+
+//Application Views
+view twView 'Your Accounts' {
+
+	controls  {
+		layout accountsLayout bindings accounts ;	
+	}
+	icon 'account.png' ;
+}
+
+view smsView 'Send SMS' {
+	color scrollViewTexturedBackground ;
+	controls  {
+    	layout smsLayout bindings SMS ;
+    }
+    icon 'message.png' ;
+}
+
+view smsListView 'My SMSs' {
+	color scrollViewTexturedBackground ;
+	controls  {
+    	layout smsList bindings getSMSList ;
+    }
+    icon 'world.png' ;
+}
+
+//Application main
+//contains three views: account details, send sms and get sms list
+main twilio {
+	navigationBar ;
+	start twView ;
+	menu { twView, smsView, smsListView}
+}

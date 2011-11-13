@@ -1,0 +1,70 @@
+package  com.canappi.connectors.zillow ;
+
+connection zillow {
+
+ 	operation searchForAddress
+
+		GET 'http://www.zillow.com/webservice/GetSearchResults.htm?zws-id=${dev-api-key}' address citystatezip {
+		protocol HTTP ;
+		resultSet 'results' ; 
+	} ;
+
+ 	operation getZestimate
+
+		GET 'http://www.zillow.com/webservice/GetZestimate.htm?zws-id=${dev-api-key}' zpid  {
+		protocol HTTP ;
+		//The estimate should be mapped as "estimate" : "zestimage.amount"
+		//We use an "absent" container since "zestimage" is a child element of the root element
+		resultSet 'absent' ;  
+	} ;
+
+ 	operation getChart
+
+		GET 'http://www.zillow.com/webservice/GetChart.htm?zws-id=${dev-api-key}&unit-type=percent' zpid  {
+		protocol HTTP ;
+		//The Graph URL should be mapped as "url" : "response.url"
+		//Since it is a child element of the response element
+		//We use an "absent" container since "response" is a child element of the root element
+		resultSet 'absent' ;  
+	} ;
+
+
+	
+}
+
+mapping resultsMapping { {"address" : "address.street" }, {"citystatezip" : "address.city" }, {"lat" : "address.latitude" },{"long" : "address.longitude" } } 
+
+	
+
+layout property  {
+	text address (20,55,280,25) {   backgroundColor clear ; Left ; placeholder 'enter+address+of+property'; border rounded ;}
+	text citystatezip (,90,280,25) {  backgroundColor clear ; Left ;  placeholder 'enter+city+state+zip' ; border rounded ;} 
+	
+	button submit 'Find Coordinates' (80,150,160,30) { 
+		Gradient GreenConfirm ;  
+		action searchZillow invokeOperation zillow searchForAddress ;
+	}
+
+	label latLabel 'Lat' (20,200,80,25) { Right ;  }
+	label longLabel 'Long' (,240,80,25) { Right ; } 
+	text lat (110,200,120,25) { backgroundColor clear ; readOnly ;  border rounded ; }
+	text long (,240,120,25) {  backgroundColor clear ; readOnly ; border rounded ; } 
+
+	
+}
+
+
+
+view searchView 'Search Property' uses user defaults {
+	color groupTableViewBackground ;
+	controls  {
+		layout property bindings zillow mapping resultsMapping ;	
+	}
+}
+
+
+main zillow {
+	navigationBar ;
+	start searchView ;
+	menu {  searchView }
+}

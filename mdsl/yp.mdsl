@@ -1,0 +1,306 @@
+package com.canappi.connector.yp.yhere ;
+
+connection ypCoupons {
+	operation init getCouponsByZip GET 'http://api2.yp.com/listings/v1/coupons?format=xml&key=5d0b448ba491c2dff5a36040a125df0a' searchloc { 
+		resultSet 'searchListings' ;
+	};
+}
+
+connection ypReviews {
+	operation getReviews GET 'http://api2.yp.com/listings/v1/reviews?key=5d0b448ba491c2dff5a36040a125df0a' listingid {
+		
+		resultSet 'reviews' ;
+	} ;
+}
+
+connection ypSearch {
+	operation init searchByZip GET 'http://api2.yp.com/listings/v1/search?format=xml&sort=distance&radius=5&listingcount=10&key=5d0b448ba491c2dff5a36040a125df0a' term searchloc {
+	 resultSet 'searchListings' ;
+	} ;
+	
+	operation detailsById GET 'http://api2.yp.com/listings/v1/details?key=5d0b448ba491c2dff5a36040a125df0a' listingid {
+		 resultSet 'listingsDetails' ;
+	} ;
+	
+}
+	
+
+connection searchRestaurants {
+	operation init searchRestaurantsByZip GET 'http://api2.yp.com/listings/v1/search?format=xml&sort=distance&radius=5&term=restaurant&listingcount=10&key=5d0b448ba491c2dff5a36040a125df0a' searchloc {
+		resultSet 'searchListings' ;
+	} ;	
+}
+
+connection searchBakeries {	
+	operation init searchBakeriesByZip GET 'http://api2.yp.com/listings/v1/search?format=xml&sort=distance&radius=5&term=bakery&listingcount=10&key=5d0b448ba491c2dff5a36040a125df0a' searchloc {
+		 resultSet 'searchListings' ;
+	} ;
+}
+
+connection searchTheaters {
+	operation init searchTeathersByZip GET 'http://api2.yp.com/listings/v1/search?format=xml&sort=distance&radius=5&term=theater&listingcount=10&key=5d0b448ba491c2dff5a36040a125df0a' searchloc {
+		 resultSet 'searchListings' ;
+	} ;
+}
+
+connection searchGames {
+	operation init searchGamesByZip GET 'http://api2.yp.com/listings/v1/search?format=xml&sort=distance&radius=5&term=games&listingcount=10&key=5d0b448ba491c2dff5a36040a125df0a' searchloc {
+		resultSet 'searchListings' ;
+	} ;
+}
+
+connection searchRepair {
+	operation init searchRepairByZip GET 'http://api2.yp.com/listings/v1/search?format=xml&sort=distance&radius=5&term=auto+repair&listingcount=10&key=5d0b448ba491c2dff5a36040a125df0a' searchloc {
+		 resultSet 'searchListings' ;
+	} ;
+}
+
+connection searchGroceryStores {
+	operation init searchGroceryStoresByZip GET 'http://api2.yp.com/listings/v1/search?format=xml&sort=distance&radius=5&term=grocery&listingcount=10&key=5d0b448ba491c2dff5a36040a125df0a' searchloc {
+		resultSet 'searchListings' ;
+	} ;
+}
+
+connection searchOilChange {
+	operation init searchOilChangeByZip GET 'http://api2.yp.com/listings/v1/search?format=xml&sort=distance&radius=5&term=oil+change&listingcount=10&key=5d0b448ba491c2dff5a36040a125df0a' searchloc {
+		 resultSet 'searchListings' ;
+	} ;
+}
+	
+connection searchGasStations {
+	operation init searchGasStationByZip GET 'http://api2.yp.com/listings/v1/search?format=xml&sort=distance&radius=5&term=gas+station&listingcount=10&key=5d0b448ba491c2dff5a36040a125df0a' searchloc {
+		protocol HTTP ; resultSet 'searchListings' ;
+	} ;
+}
+	
+	
+mapping couponMapping {{ "couponDescription" : "coupons.couponDescription"},{"businessName":"businessName"},{"couponId":"couponId"},{"phoneNumber":"phone"},{"street":"street"},{"city":"city"},{"call":"call"}} 
+	
+native String as medium string ;	
+	
+entity Customer {
+	name String ;
+}	
+	
+layout homeLayout {
+	button restaurant '' (40,70,70,70) { 
+		Custom ;
+		image 'restaurant.png' ;
+		action goToRestaurantView navigate to restaurantView ;
+		roundedCorner (8) ; 
+	}
+	button grocery '' (120,,,) { 
+		Custom ; 
+		image 'grocery.png' ;
+		action goToGroceryView navigate to groceryView ; 
+		roundedCorner (8) ;
+	}
+	button gas '' (200,,,) { 
+		Custom ;
+		image 'gas.png' ;
+		action goToGasView navigate to gasStationView ;
+		roundedCorner (8) ; 
+	}
+	button teather '' (40,150,,) { 
+		Custom ;
+		image 'theater.png' ;
+		action goToTeatherView navigate to theaterView ; 
+		roundedCorner (8) ;
+	}
+	button coupon '' (120,,,) { 
+		Custom ;
+		image 'coupon.png' ;
+		action goToCouponView navigate to couponView ; 
+		roundedCorner (8) ;
+	}
+	button lube '' (200,,,) { 
+		Custom ;
+		image 'lube.png' ;
+		action goToLubeView navigate to lubeView ; 
+		roundedCorner (8) ;
+	}
+	button game '' (40,230,,) { 
+		Custom ;
+		image 'game.png' ;
+		action goGameView navigate to gameView ; 
+		roundedCorner (8) ;
+	}
+	button bakery '' (120,,,) {
+		Custom ; 
+		image 'bakery.png' ; 
+		action goToBakeryView navigate to bakeryView ; 
+		roundedCorner (8) ;
+	}
+	button repair '' (200,,,) { 
+		Custom ;
+		image 'repair.png' ;
+		action goToRepairView navigate to repairView ; 
+		roundedCorner (8) ;
+	}
+
+	text term (20,330,180,30) { 
+		Left ; border rounded ;
+	} 
+	
+	button find 'Search' (215,330,90,30) { 
+		Gradient SimpleOrange ;		
+		action goToSearchView navigate to searchView with term ; 
+	}
+		
+}
+
+layout row {
+	label businessName 'name' (10,5,300,25) {font 'Helvetica-Bold' ; size 14; color blue ; Left ; } 
+	label latitude 'lat' (-40,5,20,25) {Left ; } 
+	label longitude 'long' (-80,5,20,25) {Left ; } 
+	label listingId 'id' (-120,5,20,25) {Left ; }
+	text phone (45,30,180,25) { Left ; }
+	button call '' (10,30,25,25) { image 'phone.png' ; action call phoneSomeone phone ; }
+	label street 'id' (10,60,190,25) {Left ; }
+	label city 'id' (215,60,80,25) {font 'Helvetica-Oblique' ; size 10; Left ; }
+
+}
+
+layout resultsLayout {
+	table results {
+		row[] ;
+		rowHeight 90 ;
+	}
+}
+
+layout coupon {
+	label businessName 'name' (10,5,300,25) {font 'Helvetica-Bold' ; size 14; color blue ; Left ; } 
+	label couponDescription 'coupon' (10,30,300,70)  {Left ; lines 3 ; }
+	label couponId 'id' (-120,5,20,25) {Left ; }
+	text phoneNumber (45,100,180,25) { Left ; }
+	button call '' (10,100,25,25) { image 'phone.png' ; action call phoneSomeone phoneNumber ; }
+	label street 'id' (10,125,190,25) {Left ; }
+	label city 'id' (215,125,80,25) {font 'Helvetica-Oblique' ; size 10; Left ; }	
+}
+
+layout couponsLayout {
+	table results {
+		coupon[] ;
+		rowHeight 150 ;
+	}
+}
+
+layout settingsLayout {
+	label enterZip 'Your Zip code' (20,120,150,40)  { Center ; }
+	text searchloc (160,120,100,40) {  Center ; border rounded ; } 
+	button updateZip 'Update' (80,250,160,40) { 
+		Gradient SimpleOrange ; 
+		action updateDefaults update defaults ;
+	} 
+	
+	//picker myPicker 'Pick..' (80,300,160,30) { 'picker.png' ; }
+	//picker myPicker2 'Pick..' (80,330,160,30) { 'picker.png' ; }
+	
+}
+
+view searchView 'Results' {
+	color white ;
+	controls {
+		layout resultsLayout bindings ypSearch ;
+	}
+}
+
+
+view restaurantView 'Restaurants' {
+	color white ;
+	controls {
+		layout resultsLayout bindings searchRestaurants ;
+	}
+	hide tabs ;
+	back 'Back' ;
+}
+
+view groceryView 'Grocery Stores' {
+	color white ;
+	controls {
+		layout resultsLayout bindings searchGroceryStores ;
+	}
+	
+}
+
+view gasStationView 'Gas Stations' {
+	color white ;
+	controls {
+		layout resultsLayout bindings searchGasStations ;
+	}
+	
+}
+
+view theaterView 'Theaters' {
+	color white ;
+	controls {
+		layout resultsLayout bindings searchTheaters ;
+	}	
+}
+
+view couponView 'Coupons' {
+	color white ;
+	controls {
+		layout couponsLayout bindings ypCoupons mapping couponMapping ;
+	}		
+}
+
+view lubeView 'Oil Change' {
+	color white ;
+	controls {
+		layout resultsLayout bindings searchOilChange ;
+	}	
+	
+}
+
+view gameView 'Game Stores' {
+	color white ;
+	controls {
+		layout resultsLayout bindings searchGames ;
+	}	
+	
+}
+
+view bakeryView 'Bakeries' {
+	color white ;
+	controls {
+		layout resultsLayout bindings searchBakeries ;
+	}	
+	
+}
+
+view repairView 'Repair' {
+	color white ;
+	controls {
+		layout resultsLayout bindings searchRepair ;
+	}	
+	
+}
+
+
+view homeView 'Home' {
+	color white ;
+	controls {
+		layout homeLayout ;
+	}	
+	icon 'home.png' ;
+	back 'Back' ;
+}
+
+view settingsView 'Settings' uses user defaults {
+	color white ;
+	controls {
+		layout settingsLayout ;
+	}	
+	icon 'settings.png';
+	
+}
+
+main yhere {
+	
+	splashscreen 'yp.png' ;
+	navigationBar ;
+	start homeView ;
+	menu { homeView , settingsView } 
+	
+}
