@@ -1,0 +1,1001 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DC20BCFA1470C86900FF124F /* about.png in Resources */ = {isa = PBXBuildFile; fileRef = DC20BCEA1470C86900FF124F /* about.png */; };
+		DC20BCFB1470C86900FF124F /* app-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DC20BCEB1470C86900FF124F /* app-icon.png */; };
+		DC20BCFC1470C86900FF124F /* arno.png in Resources */ = {isa = PBXBuildFile; fileRef = DC20BCEC1470C86900FF124F /* arno.png */; };
+		DC20BCFD1470C86900FF124F /* checkboxselected.png in Resources */ = {isa = PBXBuildFile; fileRef = DC20BCED1470C86900FF124F /* checkboxselected.png */; };
+		DC20BCFE1470C86900FF124F /* checkbox.png in Resources */ = {isa = PBXBuildFile; fileRef = DC20BCEE1470C86900FF124F /* checkbox.png */; };
+		DC20BCFF1470C86900FF124F /* custom1.png in Resources */ = {isa = PBXBuildFile; fileRef = DC20BCEF1470C86900FF124F /* custom1.png */; };
+		DC20BD001470C86900FF124F /* custom2.png in Resources */ = {isa = PBXBuildFile; fileRef = DC20BCF01470C86900FF124F /* custom2.png */; };
+		DC20BD011470C86900FF124F /* datepicker.png in Resources */ = {isa = PBXBuildFile; fileRef = DC20BCF11470C86900FF124F /* datepicker.png */; };
+		DC20BD021470C86900FF124F /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = DC20BCF21470C86900FF124F /* home.png */; };
+		DC20BD031470C86900FF124F /* large-button.png in Resources */ = {isa = PBXBuildFile; fileRef = DC20BCF31470C86900FF124F /* large-button.png */; };
+		DC20BD041470C86900FF124F /* mdsl.m4v in Resources */ = {isa = PBXBuildFile; fileRef = DC20BCF41470C86900FF124F /* mdsl.m4v */; };
+		DC20BD051470C86900FF124F /* picker.png in Resources */ = {isa = PBXBuildFile; fileRef = DC20BCF51470C86900FF124F /* picker.png */; };
+		DC20BD061470C86900FF124F /* picture1.png in Resources */ = {isa = PBXBuildFile; fileRef = DC20BCF61470C86900FF124F /* picture1.png */; };
+		DC20BD071470C86900FF124F /* picture2.png in Resources */ = {isa = PBXBuildFile; fileRef = DC20BCF71470C86900FF124F /* picture2.png */; };
+		DC20BD081470C86900FF124F /* radiobuttonselected.png in Resources */ = {isa = PBXBuildFile; fileRef = DC20BCF81470C86900FF124F /* radiobuttonselected.png */; };
+		DC20BD091470C86900FF124F /* radiobutton.png in Resources */ = {isa = PBXBuildFile; fileRef = DC20BCF91470C86900FF124F /* radiobutton.png */; };
+		DC20BD0E1470C92600FF124F /* tv.png in Resources */ = {isa = PBXBuildFile; fileRef = DC20BD0D1470C92600FF124F /* tv.png */; };
+		DC20BD101470C95300FF124F /* canappi.png in Resources */ = {isa = PBXBuildFile; fileRef = DC20BD0F1470C95300FF124F /* canappi.png */; };
+		DC20BD121470C9DC00FF124F /* app-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DC20BD111470C9DC00FF124F /* app-icon.png */; };
+		DC32AF9913C54038003703D9 /* RootController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC32AF8B13C54038003703D9 /* RootController.m */; };
+		DC32AFA413C54052003703D9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC32AFA313C54052003703D9 /* MapKit.framework */; };
+		DC32AFE713C54094003703D9 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DC32AFE613C54094003703D9 /* libz.1.2.5.dylib */; };
+		DC32AFE913C54098003703D9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC32AFE813C54098003703D9 /* SystemConfiguration.framework */; };
+		DC32AFEB13C5409D003703D9 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC32AFEA13C5409D003703D9 /* MobileCoreServices.framework */; };
+		DC32AFED13C540A2003703D9 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC32AFEC13C540A2003703D9 /* CFNetwork.framework */; };
+		DC32AFEF13C540A7003703D9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC32AFEE13C540A7003703D9 /* CoreData.framework */; };
+		DC32AFF813C54743003703D9 /* PushPinAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = DC32AFF713C54743003703D9 /* PushPinAnnotation.m */; };
+		DC4E8E0A1463410500E7EE42 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC4E8E081463410500E7EE42 /* MainWindow-iPad.xib */; };
+		DC6A6A5513F042D800FF7AC3 /* connections.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC6A6A5313F042D800FF7AC3 /* connections.plist */; };
+		DC8854FF13C5DD0500D3760F /* GradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8854F313C5DD0500D3760F /* GradientButton.m */; };
+		DC88557C13C5DE3900D3760F /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = DC88555013C5DE3800D3760F /* SBJsonWriter.m */; };
+		DC88557D13C5DE3900D3760F /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = DC88555213C5DE3800D3760F /* SBJsonTokeniser.m */; };
+		DC88557E13C5DE3900D3760F /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = DC88555413C5DE3800D3760F /* SBJsonStreamWriterState.m */; };
+		DC88557F13C5DE3900D3760F /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = DC88555613C5DE3800D3760F /* SBJsonStreamWriter.m */; };
+		DC88558013C5DE3900D3760F /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = DC88555813C5DE3800D3760F /* SBJsonStreamParserState.m */; };
+		DC88558113C5DE3900D3760F /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = DC88555A13C5DE3800D3760F /* SBJsonStreamParserAdapter.m */; };
+		DC88558213C5DE3900D3760F /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DC88555C13C5DE3800D3760F /* SBJsonStreamParser.m */; };
+		DC88558313C5DE3900D3760F /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DC88555E13C5DE3800D3760F /* SBJsonParser.m */; };
+		DC88558413C5DE3900D3760F /* NSObject+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = DC88556013C5DE3800D3760F /* NSObject+JSON.m */; };
+		DC88558513C5DE3900D3760F /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DC88556313C5DE3800D3760F /* Reachability.m */; };
+		DC88558613C5DE3900D3760F /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DC88556513C5DE3800D3760F /* ASIHTTPRequest.m */; };
+		DC88558713C5DE3900D3760F /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = DC88556913C5DE3800D3760F /* ASINetworkQueue.m */; };
+		DC88558813C5DE3900D3760F /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = DC88556A13C5DE3800D3760F /* ASIInputStream.m */; };
+		DC88558913C5DE3900D3760F /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DC88556D13C5DE3800D3760F /* ASIFormDataRequest.m */; };
+		DC88558A13C5DE3900D3760F /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = DC88557013C5DE3800D3760F /* ASIDownloadCache.m */; };
+		DC88558B13C5DE3900D3760F /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = DC88557213C5DE3800D3760F /* ASIAuthenticationDialog.m */; };
+		DC88558C13C5DE3900D3760F /* ASIS3Request.m in Sources */ = {isa = PBXBuildFile; fileRef = DC88557413C5DE3800D3760F /* ASIS3Request.m */; };
+		DC88558D13C5DE3900D3760F /* ASIS3ListRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DC88557613C5DE3800D3760F /* ASIS3ListRequest.m */; };
+		DC88558E13C5DE3900D3760F /* ASIS3BucketObject.m in Sources */ = {isa = PBXBuildFile; fileRef = DC88557813C5DE3800D3760F /* ASIS3BucketObject.m */; };
+		DC88558F13C5DE3900D3760F /* ASINSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DC88557A13C5DE3800D3760F /* ASINSStringAdditions.m */; };
+		DC8855B0DC5E12600D3760F /* mapMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A0DC5E12600D3760F /* mapMenuViewController.m */; };
+		DC8855B10C5E12600D3760F /* textEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A10C5E12600D3760F /* textEntryViewController.m */; };
+		DC8855B11C5E12600D3760F /* gradientButtonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A11C5E12600D3760F /* gradientButtonViewController.m */; };
+		DC8855B12C5E12600D3760F /* standardButtonView2Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A12C5E12600D3760F /* standardButtonView2Controller.m */; };
+		DC8855B13C5E12600D3760F /* pickersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A13C5E12600D3760F /* pickersViewController.m */; };
+		DC8855B14C5E12600D3760F /* pickersViewPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A14C5E12600D3760F /* pickersViewPickerController.m */; };
+		DC8855B15C5E12600D3760F /* pickersViewDatePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A15C5E12600D3760F /* pickersViewDatePickerController.m */; };
+		DC8855B16C5E12600D3760F /* detailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A16C5E12600D3760F /* detailViewController.m */; };
+		DC8855B17C5E12600D3760F /* contactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A17C5E12600D3760F /* contactViewController.m */; };
+		DC8855B18C5E12600D3760F /* buttonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A18C5E12600D3760F /* buttonViewController.m */; };
+		DC8855B19C5E12600D3760F /* parisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A19C5E12600D3760F /* parisViewController.m */; };
+		DC8855B1DC5E12600D3760F /* webStringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A1DC5E12600D3760F /* webStringViewController.m */; };
+		DC8855B20C5E12600D3760F /* westSamoaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A20C5E12600D3760F /* westSamoaViewController.m */; };
+		DC8855B21C5E12600D3760F /* belleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A21C5E12600D3760F /* belleViewController.m */; };
+		DC8855B22C5E12600D3760F /* webMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A22C5E12600D3760F /* webMenuController.m */; };
+		DC8855B23C5E12600D3760F /* homeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A23C5E12600D3760F /* homeViewController.m */; };
+		DC8855B24C5E12600D3760F /* aboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A24C5E12600D3760F /* aboutViewController.m */; };
+		DC8855B25C5E12600D3760F /* gradientButtonsMDSLController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A25C5E12600D3760F /* gradientButtonsMDSLController.m */; };
+		DC8855B26C5E12600D3760F /* standardButtonsMDSLController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A26C5E12600D3760F /* standardButtonsMDSLController.m */; };
+		DC8855B27C5E12600D3760F /* fontsMDSLController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A27C5E12600D3760F /* fontsMDSLController.m */; };
+		DC8855B28C5E12600D3760F /* labelsMDSLController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A28C5E12600D3760F /* labelsMDSLController.m */; };
+		DC8855B29C5E12600D3760F /* imagesMDSLController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A29C5E12600D3760F /* imagesMDSLController.m */; };
+		DC8855B2DC5E12600D3760F /* webURLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A2DC5E12600D3760F /* webURLViewController.m */; };
+		DC8855B30C5E12600D3760F /* standardMapMDSLController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A30C5E12600D3760F /* standardMapMDSLController.m */; };
+		DC8855B31C5E12600D3760F /* hybridMapMDSLController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A31C5E12600D3760F /* hybridMapMDSLController.m */; };
+		DC8855B32C5E12600D3760F /* satelliteMapMDSLController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A32C5E12600D3760F /* satelliteMapMDSLController.m */; };
+		DC8855B33C5E12600D3760F /* playerMDSLController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A33C5E12600D3760F /* playerMDSLController.m */; };
+		DC8855B34C5E12600D3760F /* pickersMDSLController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A34C5E12600D3760F /* pickersMDSLController.m */; };
+		DC8855B35C5E12600D3760F /* slidersMDSLController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A35C5E12600D3760F /* slidersMDSLController.m */; };
+		DC8855B36C5E12600D3760F /* browserStringMDSLController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A36C5E12600D3760F /* browserStringMDSLController.m */; };
+		DC8855B37C5E12600D3760F /* actionsMDSLController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A37C5E12600D3760F /* actionsMDSLController.m */; };
+		DC8855B38C5E12600D3760F /* browserURLMDSLController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A38C5E12600D3760F /* browserURLMDSLController.m */; };
+		DC8855B39C5E12600D3760F /* actionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A39C5E12600D3760F /* actionViewController.m */; };
+		DC8855B3DC5E12600D3760F /* standardButtonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A3DC5E12600D3760F /* standardButtonViewController.m */; };
+		DC8855B40C5E12600D3760F /* youTubeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A40C5E12600D3760F /* youTubeViewController.m */; };
+		DC8855B4DC5E12600D3760F /* fontViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A4DC5E12600D3760F /* fontViewController.m */; };
+		DC8855B5DC5E12600D3760F /* labelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A5DC5E12600D3760F /* labelViewController.m */; };
+		DC8855B6DC5E12600D3760F /* sliderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A6DC5E12600D3760F /* sliderViewController.m */; };
+		DC8855B7DC5E12600D3760F /* playerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A7DC5E12600D3760F /* playerViewController.m */; };
+		DC8855B8DC5E12600D3760F /* ImagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A8DC5E12600D3760F /* ImagesViewController.m */; };
+		DC8855B9DC5E12600D3760F /* textEntryLayoutMDSLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8855A9DC5E12600D3760F /* textEntryLayoutMDSLViewController.m */; };
+		DCCD7D26132E4FE700BBAB80 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCD7D25132E4FE700BBAB80 /* UIKit.framework */; };
+		DCCD7D28132E4FE800BBAB80 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCD7D27132E4FE800BBAB80 /* Foundation.framework */; };
+		DCCD7D2A132E4FE800BBAB80 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCD7D29132E4FE800BBAB80 /* CoreGraphics.framework */; };
+		DCCD7D30132E4FE800BBAB80 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DCCD7D2E132E4FE800BBAB80 /* InfoPlist.strings */; };
+		DCCD7D33132E4FE800BBAB80 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCD7D32132E4FE800BBAB80 /* main.m */; };
+		DCCD7D36132E4FE800BBAB80 /* kitchensinkAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCD7D35132E4FE800BBAB80 /* kitchensinkAppDelegate.m */; };
+		DCCD7D39132E4FE800BBAB80 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCCD7D37132E4FE800BBAB80 /* MainWindow.xib */; };
+		DCCD7D3C132E4FE800BBAB80 /* kitchensinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCD7D3B132E4FE800BBAB80 /* kitchensinkViewController.m */; };
+		DCCD7D3F132E4FE800BBAB80 /* kitchensinkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCCD7D3D132E4FE800BBAB80 /* kitchensinkViewController.xib */; };
+		DCCD7D46132E4FE800BBAB80 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCD7D25132E4FE700BBAB80 /* UIKit.framework */; };
+		DCCD7D47132E4FE800BBAB80 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCD7D27132E4FE800BBAB80 /* Foundation.framework */; };
+		DCCD7D48132E4FE800BBAB80 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCD7D29132E4FE800BBAB80 /* CoreGraphics.framework */; };
+		DCCD7D50132E4FE800BBAB80 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DCCD7D4E132E4FE800BBAB80 /* InfoPlist.strings */; };
+		DCCD7D53132E4FE800BBAB80 /* kitchensinkTests.h in Resources */ = {isa = PBXBuildFile; fileRef = DCCD7D52132E4FE800BBAB80 /* kitchensinkTests.h */; };
+		DCCD7D55132E4FE800BBAB80 /* kitchensinkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DCCD7D54132E4FE800BBAB80 /* kitchensinkTests.m */; };
+		DCEA901A13C76BC500E82748 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCEA901913C76BC500E82748 /* EventKit.framework */; };
+		DCEA901D13C76BCE00E82748 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCEA901C13C76BCE00E82748 /* MediaPlayer.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DCCD7D49132E4FE800BBAB80 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DCCD7D18132E4FE700BBAB80 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DCCD7D20132E4FE700BBAB80;
+			remoteInfo = kitchensink;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		DC20BCEA1470C86900FF124F /* about.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = about.png; sourceTree = "<group>"; };
+		DC20BCEB1470C86900FF124F /* app-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-icon.png"; sourceTree = "<group>"; };
+		DC20BCEC1470C86900FF124F /* arno.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arno.png; sourceTree = "<group>"; };
+		DC20BCED1470C86900FF124F /* checkboxselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkboxselected.png; sourceTree = "<group>"; };
+		DC20BCEE1470C86900FF124F /* checkbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox.png; sourceTree = "<group>"; };
+		DC20BCEF1470C86900FF124F /* custom1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custom1.png; sourceTree = "<group>"; };
+		DC20BCF01470C86900FF124F /* custom2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custom2.png; sourceTree = "<group>"; };
+		DC20BCF11470C86900FF124F /* datepicker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = datepicker.png; sourceTree = "<group>"; };
+		DC20BCF21470C86900FF124F /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
+		DC20BCF31470C86900FF124F /* large-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "large-button.png"; sourceTree = "<group>"; };
+		DC20BCF41470C86900FF124F /* mdsl.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = mdsl.m4v; sourceTree = "<group>"; };
+		DC20BCF51470C86900FF124F /* picker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = picker.png; sourceTree = "<group>"; };
+		DC20BCF61470C86900FF124F /* picture1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = picture1.png; sourceTree = "<group>"; };
+		DC20BCF71470C86900FF124F /* picture2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = picture2.png; sourceTree = "<group>"; };
+		DC20BCF81470C86900FF124F /* radiobuttonselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radiobuttonselected.png; sourceTree = "<group>"; };
+		DC20BCF91470C86900FF124F /* radiobutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radiobutton.png; sourceTree = "<group>"; };
+		DC20BD0D1470C92600FF124F /* tv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tv.png; sourceTree = "<group>"; };
+		DC20BD0F1470C95300FF124F /* canappi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = canappi.png; sourceTree = "<group>"; };
+		DC20BD111470C9DC00FF124F /* app-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-icon.png"; sourceTree = "<group>"; };
+		DC32AF8B13C54038003703D9 /* RootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootController.m; sourceTree = "<group>"; };
+		DC32AF8C13C54038003703D9 /* RootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootController.h; sourceTree = "<group>"; };
+		DC32AFA313C54052003703D9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		DC32AFE613C54094003703D9 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
+		DC32AFE813C54098003703D9 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		DC32AFEA13C5409D003703D9 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		DC32AFEC13C540A2003703D9 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		DC32AFEE13C540A7003703D9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		DC32AFF613C54743003703D9 /* PushPinAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushPinAnnotation.h; sourceTree = "<group>"; };
+		DC32AFF713C54743003703D9 /* PushPinAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushPinAnnotation.m; sourceTree = "<group>"; };
+		DC4E8E091463410500E7EE42 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "iPad/en.lproj/MainWindow-iPad.xib"; sourceTree = "<group>"; };
+		DC6A6A5413F042D800FF7AC3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/connections.plist; sourceTree = "<group>"; };
+		DC8854F313C5DD0500D3760F /* GradientButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientButton.m; sourceTree = "<group>"; };
+		DC8854F413C5DD0500D3760F /* GradientButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientButton.h; sourceTree = "<group>"; };
+		DC88554F13C5DE3800D3760F /* ASIHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequest.h; sourceTree = "<group>"; };
+		DC88555013C5DE3800D3760F /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		DC88555113C5DE3800D3760F /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		DC88555213C5DE3800D3760F /* SBJsonTokeniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonTokeniser.m; sourceTree = "<group>"; };
+		DC88555313C5DE3800D3760F /* SBJsonTokeniser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonTokeniser.h; sourceTree = "<group>"; };
+		DC88555413C5DE3800D3760F /* SBJsonStreamWriterState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterState.m; sourceTree = "<group>"; };
+		DC88555513C5DE3800D3760F /* SBJsonStreamWriterState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriterState.h; sourceTree = "<group>"; };
+		DC88555613C5DE3800D3760F /* SBJsonStreamWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriter.m; sourceTree = "<group>"; };
+		DC88555713C5DE3800D3760F /* SBJsonStreamWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriter.h; sourceTree = "<group>"; };
+		DC88555813C5DE3800D3760F /* SBJsonStreamParserState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserState.m; sourceTree = "<group>"; };
+		DC88555913C5DE3800D3760F /* SBJsonStreamParserState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserState.h; sourceTree = "<group>"; };
+		DC88555A13C5DE3800D3760F /* SBJsonStreamParserAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAdapter.m; sourceTree = "<group>"; };
+		DC88555B13C5DE3800D3760F /* SBJsonStreamParserAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAdapter.h; sourceTree = "<group>"; };
+		DC88555C13C5DE3800D3760F /* SBJsonStreamParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParser.m; sourceTree = "<group>"; };
+		DC88555D13C5DE3800D3760F /* SBJsonStreamParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParser.h; sourceTree = "<group>"; };
+		DC88555E13C5DE3800D3760F /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		DC88555F13C5DE3800D3760F /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		DC88556013C5DE3800D3760F /* NSObject+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JSON.m"; sourceTree = "<group>"; };
+		DC88556113C5DE3800D3760F /* NSObject+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JSON.h"; sourceTree = "<group>"; };
+		DC88556213C5DE3800D3760F /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		DC88556313C5DE3800D3760F /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		DC88556413C5DE3800D3760F /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		DC88556513C5DE3800D3760F /* ASIHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIHTTPRequest.m; sourceTree = "<group>"; };
+		DC88556613C5DE3800D3760F /* ASIHTTPRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestDelegate.h; sourceTree = "<group>"; };
+		DC88556713C5DE3800D3760F /* ASINetworkQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASINetworkQueue.h; sourceTree = "<group>"; };
+		DC88556813C5DE3800D3760F /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
+		DC88556913C5DE3800D3760F /* ASINetworkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASINetworkQueue.m; sourceTree = "<group>"; };
+		DC88556A13C5DE3800D3760F /* ASIInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIInputStream.m; sourceTree = "<group>"; };
+		DC88556B13C5DE3800D3760F /* ASIInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIInputStream.h; sourceTree = "<group>"; };
+		DC88556C13C5DE3800D3760F /* ASIHTTPRequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestConfig.h; sourceTree = "<group>"; };
+		DC88556D13C5DE3800D3760F /* ASIFormDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIFormDataRequest.m; sourceTree = "<group>"; };
+		DC88556E13C5DE3800D3760F /* ASIFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIFormDataRequest.h; sourceTree = "<group>"; };
+		DC88556F13C5DE3800D3760F /* ASIDownloadCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDownloadCache.h; sourceTree = "<group>"; };
+		DC88557013C5DE3800D3760F /* ASIDownloadCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDownloadCache.m; sourceTree = "<group>"; };
+		DC88557113C5DE3800D3760F /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
+		DC88557213C5DE3800D3760F /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
+		DC88557313C5DE3800D3760F /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
+		DC88557413C5DE3800D3760F /* ASIS3Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIS3Request.m; sourceTree = "<group>"; };
+		DC88557513C5DE3800D3760F /* ASIS3Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIS3Request.h; sourceTree = "<group>"; };
+		DC88557613C5DE3800D3760F /* ASIS3ListRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIS3ListRequest.m; sourceTree = "<group>"; };
+		DC88557713C5DE3800D3760F /* ASIS3ListRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIS3ListRequest.h; sourceTree = "<group>"; };
+		DC88557813C5DE3800D3760F /* ASIS3BucketObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIS3BucketObject.m; sourceTree = "<group>"; };
+		DC88557913C5DE3800D3760F /* ASIS3BucketObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIS3BucketObject.h; sourceTree = "<group>"; };
+		DC88557A13C5DE3800D3760F /* ASINSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASINSStringAdditions.m; sourceTree = "<group>"; };
+		DC88557B13C5DE3800D3760F /* ASINSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASINSStringAdditions.h; sourceTree = "<group>"; };
+		DC8855A0DC5E12600D3760F /* mapMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mapMenuViewController.m; sourceTree = "<group>"; };
+		DC8855A10C5E12600D3760F /* textEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = textEntryViewController.m; sourceTree = "<group>"; };
+		DC8855A11C5E12600D3760F /* gradientButtonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = gradientButtonViewController.m; sourceTree = "<group>"; };
+		DC8855A12C5E12600D3760F /* standardButtonView2Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = standardButtonView2Controller.m; sourceTree = "<group>"; };
+		DC8855A13C5E12600D3760F /* pickersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pickersViewController.m; sourceTree = "<group>"; };
+		DC8855A14C5E12600D3760F /* pickersViewPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pickersViewPickerController.m; sourceTree = "<group>"; };
+		DC8855A15C5E12600D3760F /* pickersViewDatePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pickersViewDatePickerController.m; sourceTree = "<group>"; };
+		DC8855A16C5E12600D3760F /* detailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = detailViewController.m; sourceTree = "<group>"; };
+		DC8855A17C5E12600D3760F /* contactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = contactViewController.m; sourceTree = "<group>"; };
+		DC8855A18C5E12600D3760F /* buttonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = buttonViewController.m; sourceTree = "<group>"; };
+		DC8855A19C5E12600D3760F /* parisViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = parisViewController.m; sourceTree = "<group>"; };
+		DC8855A1DC5E12600D3760F /* webStringViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = webStringViewController.m; sourceTree = "<group>"; };
+		DC8855A20C5E12600D3760F /* westSamoaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = westSamoaViewController.m; sourceTree = "<group>"; };
+		DC8855A21C5E12600D3760F /* belleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = belleViewController.m; sourceTree = "<group>"; };
+		DC8855A22C5E12600D3760F /* webMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = webMenuController.m; sourceTree = "<group>"; };
+		DC8855A23C5E12600D3760F /* homeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = homeViewController.m; sourceTree = "<group>"; };
+		DC8855A24C5E12600D3760F /* aboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = aboutViewController.m; sourceTree = "<group>"; };
+		DC8855A25C5E12600D3760F /* gradientButtonsMDSLController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = gradientButtonsMDSLController.m; sourceTree = "<group>"; };
+		DC8855A26C5E12600D3760F /* standardButtonsMDSLController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = standardButtonsMDSLController.m; sourceTree = "<group>"; };
+		DC8855A27C5E12600D3760F /* fontsMDSLController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = fontsMDSLController.m; sourceTree = "<group>"; };
+		DC8855A28C5E12600D3760F /* labelsMDSLController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = labelsMDSLController.m; sourceTree = "<group>"; };
+		DC8855A29C5E12600D3760F /* imagesMDSLController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imagesMDSLController.m; sourceTree = "<group>"; };
+		DC8855A2DC5E12600D3760F /* webURLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = webURLViewController.m; sourceTree = "<group>"; };
+		DC8855A30C5E12600D3760F /* standardMapMDSLController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = standardMapMDSLController.m; sourceTree = "<group>"; };
+		DC8855A31C5E12600D3760F /* hybridMapMDSLController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hybridMapMDSLController.m; sourceTree = "<group>"; };
+		DC8855A32C5E12600D3760F /* satelliteMapMDSLController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = satelliteMapMDSLController.m; sourceTree = "<group>"; };
+		DC8855A33C5E12600D3760F /* playerMDSLController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = playerMDSLController.m; sourceTree = "<group>"; };
+		DC8855A34C5E12600D3760F /* pickersMDSLController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pickersMDSLController.m; sourceTree = "<group>"; };
+		DC8855A35C5E12600D3760F /* slidersMDSLController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = slidersMDSLController.m; sourceTree = "<group>"; };
+		DC8855A36C5E12600D3760F /* browserStringMDSLController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = browserStringMDSLController.m; sourceTree = "<group>"; };
+		DC8855A37C5E12600D3760F /* actionsMDSLController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = actionsMDSLController.m; sourceTree = "<group>"; };
+		DC8855A38C5E12600D3760F /* browserURLMDSLController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = browserURLMDSLController.m; sourceTree = "<group>"; };
+		DC8855A39C5E12600D3760F /* actionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = actionViewController.m; sourceTree = "<group>"; };
+		DC8855A3DC5E12600D3760F /* standardButtonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = standardButtonViewController.m; sourceTree = "<group>"; };
+		DC8855A40C5E12600D3760F /* youTubeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = youTubeViewController.m; sourceTree = "<group>"; };
+		DC8855A4DC5E12600D3760F /* fontViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = fontViewController.m; sourceTree = "<group>"; };
+		DC8855A5DC5E12600D3760F /* labelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = labelViewController.m; sourceTree = "<group>"; };
+		DC8855A6DC5E12600D3760F /* sliderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sliderViewController.m; sourceTree = "<group>"; };
+		DC8855A7DC5E12600D3760F /* playerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = playerViewController.m; sourceTree = "<group>"; };
+		DC8855A8DC5E12600D3760F /* ImagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesViewController.m; sourceTree = "<group>"; };
+		DC8855A9DC5E12600D3760F /* textEntryLayoutMDSLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = textEntryLayoutMDSLViewController.m; sourceTree = "<group>"; };
+		DC8855C0DC5E12600D3760F /* mapMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mapMenuViewController.h; sourceTree = "<group>"; };
+		DC8855C10C5E12600D3760F /* textEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = textEntryViewController.h; sourceTree = "<group>"; };
+		DC8855C11C5E12600D3760F /* gradientButtonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gradientButtonViewController.h; sourceTree = "<group>"; };
+		DC8855C12C5E12600D3760F /* standardButtonView2Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = standardButtonView2Controller.h; sourceTree = "<group>"; };
+		DC8855C13C5E12600D3760F /* pickersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pickersViewController.h; sourceTree = "<group>"; };
+		DC8855C14C5E12600D3760F /* pickersViewPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pickersViewPickerController.h; sourceTree = "<group>"; };
+		DC8855C15C5E12600D3760F /* pickersViewDatePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pickersViewDatePickerController.h; sourceTree = "<group>"; };
+		DC8855C16C5E12600D3760F /* detailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = detailViewController.h; sourceTree = "<group>"; };
+		DC8855C17C5E12600D3760F /* contactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = contactViewController.h; sourceTree = "<group>"; };
+		DC8855C18C5E12600D3760F /* buttonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buttonViewController.h; sourceTree = "<group>"; };
+		DC8855C19C5E12600D3760F /* parisViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parisViewController.h; sourceTree = "<group>"; };
+		DC8855C1DC5E12600D3760F /* webStringViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = webStringViewController.h; sourceTree = "<group>"; };
+		DC8855C20C5E12600D3760F /* westSamoaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = westSamoaViewController.h; sourceTree = "<group>"; };
+		DC8855C21C5E12600D3760F /* belleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = belleViewController.h; sourceTree = "<group>"; };
+		DC8855C22C5E12600D3760F /* webMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = webMenuController.h; sourceTree = "<group>"; };
+		DC8855C23C5E12600D3760F /* homeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = homeViewController.h; sourceTree = "<group>"; };
+		DC8855C24C5E12600D3760F /* aboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aboutViewController.h; sourceTree = "<group>"; };
+		DC8855C25C5E12600D3760F /* gradientButtonsMDSLController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gradientButtonsMDSLController.h; sourceTree = "<group>"; };
+		DC8855C26C5E12600D3760F /* standardButtonsMDSLController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = standardButtonsMDSLController.h; sourceTree = "<group>"; };
+		DC8855C27C5E12600D3760F /* fontsMDSLController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fontsMDSLController.h; sourceTree = "<group>"; };
+		DC8855C28C5E12600D3760F /* labelsMDSLController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = labelsMDSLController.h; sourceTree = "<group>"; };
+		DC8855C29C5E12600D3760F /* imagesMDSLController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imagesMDSLController.h; sourceTree = "<group>"; };
+		DC8855C2DC5E12600D3760F /* webURLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = webURLViewController.h; sourceTree = "<group>"; };
+		DC8855C30C5E12600D3760F /* standardMapMDSLController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = standardMapMDSLController.h; sourceTree = "<group>"; };
+		DC8855C31C5E12600D3760F /* hybridMapMDSLController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hybridMapMDSLController.h; sourceTree = "<group>"; };
+		DC8855C32C5E12600D3760F /* satelliteMapMDSLController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = satelliteMapMDSLController.h; sourceTree = "<group>"; };
+		DC8855C33C5E12600D3760F /* playerMDSLController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = playerMDSLController.h; sourceTree = "<group>"; };
+		DC8855C34C5E12600D3760F /* pickersMDSLController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pickersMDSLController.h; sourceTree = "<group>"; };
+		DC8855C35C5E12600D3760F /* slidersMDSLController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = slidersMDSLController.h; sourceTree = "<group>"; };
+		DC8855C36C5E12600D3760F /* browserStringMDSLController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = browserStringMDSLController.h; sourceTree = "<group>"; };
+		DC8855C37C5E12600D3760F /* actionsMDSLController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = actionsMDSLController.h; sourceTree = "<group>"; };
+		DC8855C38C5E12600D3760F /* browserURLMDSLController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = browserURLMDSLController.h; sourceTree = "<group>"; };
+		DC8855C39C5E12600D3760F /* actionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = actionViewController.h; sourceTree = "<group>"; };
+		DC8855C3DC5E12600D3760F /* standardButtonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = standardButtonViewController.h; sourceTree = "<group>"; };
+		DC8855C40C5E12600D3760F /* youTubeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = youTubeViewController.h; sourceTree = "<group>"; };
+		DC8855C4DC5E12600D3760F /* fontViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fontViewController.h; sourceTree = "<group>"; };
+		DC8855C5DC5E12600D3760F /* labelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = labelViewController.h; sourceTree = "<group>"; };
+		DC8855C6DC5E12600D3760F /* sliderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sliderViewController.h; sourceTree = "<group>"; };
+		DC8855C7DC5E12600D3760F /* playerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = playerViewController.h; sourceTree = "<group>"; };
+		DC8855C8DC5E12600D3760F /* ImagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagesViewController.h; sourceTree = "<group>"; };
+		DC8855C9DC5E12600D3760F /* textEntryLayoutMDSLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = textEntryLayoutMDSLViewController.h; sourceTree = "<group>"; };
+		DCCD7D21132E4FE700BBAB80 /* kitchensink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kitchensink.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCCD7D25132E4FE700BBAB80 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		DCCD7D27132E4FE800BBAB80 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		DCCD7D29132E4FE800BBAB80 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		DCCD7D2D132E4FE800BBAB80 /* kitchensink-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "kitchensink-Info.plist"; sourceTree = "<group>"; };
+		DCCD7D2F132E4FE800BBAB80 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DCCD7D31132E4FE800BBAB80 /* kitchensink-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "kitchensink-Prefix.pch"; sourceTree = "<group>"; };
+		DCCD7D32132E4FE800BBAB80 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DCCD7D34132E4FE800BBAB80 /* kitchensinkAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = kitchensinkAppDelegate.h; sourceTree = "<group>"; };
+		DCCD7D35132E4FE800BBAB80 /* kitchensinkAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = kitchensinkAppDelegate.m; sourceTree = "<group>"; };
+		DCCD7D38132E4FE800BBAB80 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		DCCD7D3A132E4FE800BBAB80 /* kitchensinkViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = kitchensinkViewController.h; sourceTree = "<group>"; };
+		DCCD7D3B132E4FE800BBAB80 /* kitchensinkViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = kitchensinkViewController.m; sourceTree = "<group>"; };
+		DCCD7D3E132E4FE800BBAB80 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/kitchensinkViewController.xib; sourceTree = "<group>"; };
+		DCCD7D45132E4FE800BBAB80 /* kitchensinkTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = kitchensinkTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCCD7D4D132E4FE800BBAB80 /* kitchensinkTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "kitchensinkTests-Info.plist"; sourceTree = "<group>"; };
+		DCCD7D4F132E4FE800BBAB80 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DCCD7D51132E4FE800BBAB80 /* kitchensinkTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "kitchensinkTests-Prefix.pch"; sourceTree = "<group>"; };
+		DCCD7D52132E4FE800BBAB80 /* kitchensinkTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = kitchensinkTests.h; sourceTree = "<group>"; };
+		DCCD7D54132E4FE800BBAB80 /* kitchensinkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = kitchensinkTests.m; sourceTree = "<group>"; };
+		DCEA901913C76BC500E82748 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		DCEA901C13C76BCE00E82748 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DCCD7D1E132E4FE700BBAB80 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC32AFEF13C540A7003703D9 /* CoreData.framework in Frameworks */,
+				DC32AFED13C540A2003703D9 /* CFNetwork.framework in Frameworks */,
+				DC32AFEB13C5409D003703D9 /* MobileCoreServices.framework in Frameworks */,
+				DC32AFE913C54098003703D9 /* SystemConfiguration.framework in Frameworks */,
+				DC32AFE713C54094003703D9 /* libz.1.2.5.dylib in Frameworks */,
+				DC32AFA413C54052003703D9 /* MapKit.framework in Frameworks */,
+				DCEA901D13C76BCE00E82748 /* MediaPlayer.framework in Frameworks */,
+				DCEA901A13C76BC500E82748 /* EventKit.framework in Frameworks */,
+				DCCD7D26132E4FE700BBAB80 /* UIKit.framework in Frameworks */,
+				DCCD7D28132E4FE800BBAB80 /* Foundation.framework in Frameworks */,
+				DCCD7D2A132E4FE800BBAB80 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DCCD7D41132E4FE800BBAB80 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DCCD7D46132E4FE800BBAB80 /* UIKit.framework in Frameworks */,
+				DCCD7D47132E4FE800BBAB80 /* Foundation.framework in Frameworks */,
+				DCCD7D48132E4FE800BBAB80 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DC4E8E071463410500E7EE42 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				DC4E8E081463410500E7EE42 /* MainWindow-iPad.xib */,
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
+		DCCD7D16132E4FE700BBAB80 = {
+			isa = PBXGroup;
+			children = (
+				DC20BD111470C9DC00FF124F /* app-icon.png */,
+				DC32AFEE13C540A7003703D9 /* CoreData.framework */,
+				DC32AFEC13C540A2003703D9 /* CFNetwork.framework */,
+				DC32AFEA13C5409D003703D9 /* MobileCoreServices.framework */,
+				DC32AFE813C54098003703D9 /* SystemConfiguration.framework */,
+				DC32AFE613C54094003703D9 /* libz.1.2.5.dylib */,
+				DC32AFA313C54052003703D9 /* MapKit.framework */,
+				DCEA901C13C76BCE00E82748 /* MediaPlayer.framework */,
+				DCEA901913C76BC500E82748 /* EventKit.framework */,
+				DCCD7D2B132E4FE800BBAB80 /* kitchensink */,
+				DCCD7D4B132E4FE800BBAB80 /* kitchensinkTests */,
+				DCCD7D24132E4FE700BBAB80 /* Frameworks */,
+				DCCD7D22132E4FE700BBAB80 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DCCD7D22132E4FE700BBAB80 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DCCD7D21132E4FE700BBAB80 /* kitchensink.app */,
+				DCCD7D45132E4FE800BBAB80 /* kitchensinkTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DCCD7D24132E4FE700BBAB80 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DCCD7D25132E4FE700BBAB80 /* UIKit.framework */,
+				DCCD7D27132E4FE800BBAB80 /* Foundation.framework */,
+				DCCD7D29132E4FE800BBAB80 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DCCD7D2B132E4FE800BBAB80 /* kitchensink */ = {
+			isa = PBXGroup;
+			children = (
+				DC4E8E071463410500E7EE42 /* iPad */,
+				DC88554F13C5DE3800D3760F /* ASIHTTPRequest.h */,
+				DC88555013C5DE3800D3760F /* SBJsonWriter.m */,
+				DC88555113C5DE3800D3760F /* SBJsonWriter.h */,
+				DC88555213C5DE3800D3760F /* SBJsonTokeniser.m */,
+				DC88555313C5DE3800D3760F /* SBJsonTokeniser.h */,
+				DC88555413C5DE3800D3760F /* SBJsonStreamWriterState.m */,
+				DC88555513C5DE3800D3760F /* SBJsonStreamWriterState.h */,
+				DC88555613C5DE3800D3760F /* SBJsonStreamWriter.m */,
+				DC88555713C5DE3800D3760F /* SBJsonStreamWriter.h */,
+				DC88555813C5DE3800D3760F /* SBJsonStreamParserState.m */,
+				DC88555913C5DE3800D3760F /* SBJsonStreamParserState.h */,
+				DC88555A13C5DE3800D3760F /* SBJsonStreamParserAdapter.m */,
+				DC88555B13C5DE3800D3760F /* SBJsonStreamParserAdapter.h */,
+				DC88555C13C5DE3800D3760F /* SBJsonStreamParser.m */,
+				DC88555D13C5DE3800D3760F /* SBJsonStreamParser.h */,
+				DC88555E13C5DE3800D3760F /* SBJsonParser.m */,
+				DC88555F13C5DE3800D3760F /* SBJsonParser.h */,
+				DC88556013C5DE3800D3760F /* NSObject+JSON.m */,
+				DC88556113C5DE3800D3760F /* NSObject+JSON.h */,
+				DC88556213C5DE3800D3760F /* JSON.h */,
+				DC88556313C5DE3800D3760F /* Reachability.m */,
+				DC88556413C5DE3800D3760F /* Reachability.h */,
+				DC88556513C5DE3800D3760F /* ASIHTTPRequest.m */,
+				DC88556613C5DE3800D3760F /* ASIHTTPRequestDelegate.h */,
+				DC88556713C5DE3800D3760F /* ASINetworkQueue.h */,
+				DC88556813C5DE3800D3760F /* ASIProgressDelegate.h */,
+				DC88556913C5DE3800D3760F /* ASINetworkQueue.m */,
+				DC88556A13C5DE3800D3760F /* ASIInputStream.m */,
+				DC88556B13C5DE3800D3760F /* ASIInputStream.h */,
+				DC88556C13C5DE3800D3760F /* ASIHTTPRequestConfig.h */,
+				DC88556D13C5DE3800D3760F /* ASIFormDataRequest.m */,
+				DC88556E13C5DE3800D3760F /* ASIFormDataRequest.h */,
+				DC88556F13C5DE3800D3760F /* ASIDownloadCache.h */,
+				DC88557013C5DE3800D3760F /* ASIDownloadCache.m */,
+				DC88557113C5DE3800D3760F /* ASICacheDelegate.h */,
+				DC88557213C5DE3800D3760F /* ASIAuthenticationDialog.m */,
+				DC88557313C5DE3800D3760F /* ASIAuthenticationDialog.h */,
+				DC88557413C5DE3800D3760F /* ASIS3Request.m */,
+				DC88557513C5DE3800D3760F /* ASIS3Request.h */,
+				DC88557613C5DE3800D3760F /* ASIS3ListRequest.m */,
+				DC88557713C5DE3800D3760F /* ASIS3ListRequest.h */,
+				DC88557813C5DE3800D3760F /* ASIS3BucketObject.m */,
+				DC88557913C5DE3800D3760F /* ASIS3BucketObject.h */,
+				DC88557A13C5DE3800D3760F /* ASINSStringAdditions.m */,
+				DC88557B13C5DE3800D3760F /* ASINSStringAdditions.h */,
+				DC32AFF613C54743003703D9 /* PushPinAnnotation.h */,
+				DC32AFF713C54743003703D9 /* PushPinAnnotation.m */,
+				DC32AF8B13C54038003703D9 /* RootController.m */,
+				DC32AF8C13C54038003703D9 /* RootController.h */,
+				DC8854F313C5DD0500D3760F /* GradientButton.m */,
+				DC8854F413C5DD0500D3760F /* GradientButton.h */,
+				DC8855A0DC5E12600D3760F /* mapMenuViewController.m */,
+				DC8855C0DC5E12600D3760F /* mapMenuViewController.h */,
+				DC8855A1DC5E12600D3760F /* webStringViewController.m */,
+				DC8855C1DC5E12600D3760F /* webStringViewController.h */,
+				DC8855A2DC5E12600D3760F /* webURLViewController.m */,
+				DC8855C2DC5E12600D3760F /* webURLViewController.h */,
+				DC8855A3DC5E12600D3760F /* standardButtonViewController.m */,
+				DC8855C3DC5E12600D3760F /* standardButtonViewController.h */,
+				DC8855A4DC5E12600D3760F /* fontViewController.m */,
+				DC8855C4DC5E12600D3760F /* fontViewController.h */,
+				DC8855A5DC5E12600D3760F /* labelViewController.m */,
+				DC8855C5DC5E12600D3760F /* labelViewController.h */,
+				DC8855A6DC5E12600D3760F /* sliderViewController.m */,
+				DC8855C6DC5E12600D3760F /* sliderViewController.h */,
+				DC8855A7DC5E12600D3760F /* playerViewController.m */,
+				DC8855C7DC5E12600D3760F /* playerViewController.h */,
+				DC8855A8DC5E12600D3760F /* ImagesViewController.m */,
+				DC8855C8DC5E12600D3760F /* ImagesViewController.h */,
+				DC8855A9DC5E12600D3760F /* textEntryLayoutMDSLViewController.m */,
+				DC8855C9DC5E12600D3760F /* textEntryLayoutMDSLViewController.h */,
+				DC8855A10C5E12600D3760F /* textEntryViewController.m */,
+				DC8855C10C5E12600D3760F /* textEntryViewController.h */,
+				DC8855A11C5E12600D3760F /* gradientButtonViewController.m */,
+				DC8855C11C5E12600D3760F /* gradientButtonViewController.h */,
+				DC8855A12C5E12600D3760F /* standardButtonView2Controller.m */,
+				DC8855C12C5E12600D3760F /* standardButtonView2Controller.h */,
+				DC8855A13C5E12600D3760F /* pickersViewController.m */,
+				DC8855C13C5E12600D3760F /* pickersViewController.h */,
+				DC8855A14C5E12600D3760F /* pickersViewPickerController.m */,
+				DC8855C14C5E12600D3760F /* pickersViewPickerController.h */,
+				DC8855A15C5E12600D3760F /* pickersViewDatePickerController.m */,
+				DC8855C15C5E12600D3760F /* pickersViewDatePickerController.h */,
+				DC8855A16C5E12600D3760F /* detailViewController.m */,
+				DC8855C16C5E12600D3760F /* detailViewController.h */,
+				DC8855A17C5E12600D3760F /* contactViewController.m */,
+				DC8855C17C5E12600D3760F /* contactViewController.h */,
+				DC8855A18C5E12600D3760F /* buttonViewController.m */,
+				DC8855C18C5E12600D3760F /* buttonViewController.h */,
+				DC8855A19C5E12600D3760F /* parisViewController.m */,
+				DC8855C19C5E12600D3760F /* parisViewController.h */,
+				DC8855A20C5E12600D3760F /* westSamoaViewController.m */,
+				DC8855C20C5E12600D3760F /* westSamoaViewController.h */,
+				DC8855A21C5E12600D3760F /* belleViewController.m */,
+				DC8855C21C5E12600D3760F /* belleViewController.h */,
+				DC8855A22C5E12600D3760F /* webMenuController.m */,
+				DC8855C22C5E12600D3760F /* webMenuController.h */,
+				DC8855A23C5E12600D3760F /* homeViewController.m */,
+				DC8855C23C5E12600D3760F /* homeViewController.h */,
+				DC8855A24C5E12600D3760F /* aboutViewController.m */,
+				DC8855C24C5E12600D3760F /* aboutViewController.h */,
+				DC8855A25C5E12600D3760F /* gradientButtonsMDSLController.m */,
+				DC8855C25C5E12600D3760F /* gradientButtonsMDSLController.h */,
+				DC8855A26C5E12600D3760F /* standardButtonsMDSLController.m */,
+				DC8855C26C5E12600D3760F /* standardButtonsMDSLController.h */,
+				DC8855A27C5E12600D3760F /* fontsMDSLController.m */,
+				DC8855C27C5E12600D3760F /* fontsMDSLController.h */,
+				DC8855A28C5E12600D3760F /* labelsMDSLController.m */,
+				DC8855C28C5E12600D3760F /* labelsMDSLController.h */,
+				DC8855A29C5E12600D3760F /* imagesMDSLController.m */,
+				DC8855C29C5E12600D3760F /* imagesMDSLController.h */,
+				DC8855A30C5E12600D3760F /* standardMapMDSLController.m */,
+				DC8855C30C5E12600D3760F /* standardMapMDSLController.h */,
+				DC8855A31C5E12600D3760F /* hybridMapMDSLController.m */,
+				DC8855C31C5E12600D3760F /* hybridMapMDSLController.h */,
+				DC8855A32C5E12600D3760F /* satelliteMapMDSLController.m */,
+				DC8855C32C5E12600D3760F /* satelliteMapMDSLController.h */,
+				DC8855A33C5E12600D3760F /* playerMDSLController.m */,
+				DC8855C33C5E12600D3760F /* playerMDSLController.h */,
+				DC8855A34C5E12600D3760F /* pickersMDSLController.m */,
+				DC8855C34C5E12600D3760F /* pickersMDSLController.h */,
+				DC8855A35C5E12600D3760F /* slidersMDSLController.m */,
+				DC8855C35C5E12600D3760F /* slidersMDSLController.h */,
+				DC8855A36C5E12600D3760F /* browserStringMDSLController.m */,
+				DC8855C36C5E12600D3760F /* browserStringMDSLController.h */,
+				DC8855A37C5E12600D3760F /* actionsMDSLController.m */,
+				DC8855C37C5E12600D3760F /* actionsMDSLController.h */,
+				DC8855A38C5E12600D3760F /* browserURLMDSLController.m */,
+				DC8855C38C5E12600D3760F /* browserURLMDSLController.h */,
+				DC8855A39C5E12600D3760F /* actionViewController.m */,
+				DC8855C39C5E12600D3760F /* actionViewController.h */,
+				DC8855A40C5E12600D3760F /* youTubeViewController.m */,
+				DC8855C40C5E12600D3760F /* youTubeViewController.h */,
+				DCCD7D34132E4FE800BBAB80 /* kitchensinkAppDelegate.h */,
+				DCCD7D35132E4FE800BBAB80 /* kitchensinkAppDelegate.m */,
+				DCCD7D37132E4FE800BBAB80 /* MainWindow.xib */,
+				DCCD7D3A132E4FE800BBAB80 /* kitchensinkViewController.h */,
+				DCCD7D3B132E4FE800BBAB80 /* kitchensinkViewController.m */,
+				DCCD7D3D132E4FE800BBAB80 /* kitchensinkViewController.xib */,
+				DCCD7D2C132E4FE800BBAB80 /* Supporting Files */,
+			);
+			path = kitchensink;
+			sourceTree = "<group>";
+		};
+		DCCD7D2C132E4FE800BBAB80 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DC20BD0F1470C95300FF124F /* canappi.png */,
+				DC20BD0D1470C92600FF124F /* tv.png */,
+				DC20BCEA1470C86900FF124F /* about.png */,
+				DC20BCEB1470C86900FF124F /* app-icon.png */,
+				DC20BCEC1470C86900FF124F /* arno.png */,
+				DC20BCED1470C86900FF124F /* checkboxselected.png */,
+				DC20BCEE1470C86900FF124F /* checkbox.png */,
+				DC20BCEF1470C86900FF124F /* custom1.png */,
+				DC20BCF01470C86900FF124F /* custom2.png */,
+				DC20BCF11470C86900FF124F /* datepicker.png */,
+				DC20BCF21470C86900FF124F /* home.png */,
+				DC20BCF31470C86900FF124F /* large-button.png */,
+				DC20BCF41470C86900FF124F /* mdsl.m4v */,
+				DC20BCF51470C86900FF124F /* picker.png */,
+				DC20BCF61470C86900FF124F /* picture1.png */,
+				DC20BCF71470C86900FF124F /* picture2.png */,
+				DC20BCF81470C86900FF124F /* radiobuttonselected.png */,
+				DC20BCF91470C86900FF124F /* radiobutton.png */,
+				DC6A6A5313F042D800FF7AC3 /* connections.plist */,
+				DCCD7D2D132E4FE800BBAB80 /* kitchensink-Info.plist */,
+				DCCD7D2E132E4FE800BBAB80 /* InfoPlist.strings */,
+				DCCD7D31132E4FE800BBAB80 /* kitchensink-Prefix.pch */,
+				DCCD7D32132E4FE800BBAB80 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DCCD7D4B132E4FE800BBAB80 /* kitchensinkTests */ = {
+			isa = PBXGroup;
+			children = (
+				DCCD7D52132E4FE800BBAB80 /* kitchensinkTests.h */,
+				DCCD7D54132E4FE800BBAB80 /* kitchensinkTests.m */,
+				DCCD7D4C132E4FE800BBAB80 /* Supporting Files */,
+			);
+			path = kitchensinkTests;
+			sourceTree = "<group>";
+		};
+		DCCD7D4C132E4FE800BBAB80 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DCCD7D4D132E4FE800BBAB80 /* kitchensinkTests-Info.plist */,
+				DCCD7D4E132E4FE800BBAB80 /* InfoPlist.strings */,
+				DCCD7D51132E4FE800BBAB80 /* kitchensinkTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DCCD7D20132E4FE700BBAB80 /* kitchensink */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DCCD7D58132E4FE800BBAB80 /* Build configuration list for PBXNativeTarget "kitchensink" */;
+			buildPhases = (
+				DCCD7D1D132E4FE700BBAB80 /* Sources */,
+				DCCD7D1E132E4FE700BBAB80 /* Frameworks */,
+				DCCD7D1F132E4FE700BBAB80 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = kitchensink;
+			productName = kitchensink;
+			productReference = DCCD7D21132E4FE700BBAB80 /* kitchensink.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DCCD7D44132E4FE800BBAB80 /* kitchensinkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DCCD7D5B132E4FE800BBAB80 /* Build configuration list for PBXNativeTarget "kitchensinkTests" */;
+			buildPhases = (
+				DCCD7D40132E4FE800BBAB80 /* Sources */,
+				DCCD7D41132E4FE800BBAB80 /* Frameworks */,
+				DCCD7D42132E4FE800BBAB80 /* Resources */,
+				DCCD7D43132E4FE800BBAB80 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DCCD7D4A132E4FE800BBAB80 /* PBXTargetDependency */,
+			);
+			name = kitchensinkTests;
+			productName = kitchensinkTests;
+			productReference = DCCD7D45132E4FE800BBAB80 /* kitchensinkTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DCCD7D18132E4FE700BBAB80 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = Canappi;
+			};
+			buildConfigurationList = DCCD7D1B132E4FE700BBAB80 /* Build configuration list for PBXProject "kitchensink" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = DCCD7D16132E4FE700BBAB80;
+			productRefGroup = DCCD7D22132E4FE700BBAB80 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DCCD7D20132E4FE700BBAB80 /* kitchensink */,
+				DCCD7D44132E4FE800BBAB80 /* kitchensinkTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DCCD7D1F132E4FE700BBAB80 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DCCD7D30132E4FE800BBAB80 /* InfoPlist.strings in Resources */,
+				DCCD7D39132E4FE800BBAB80 /* MainWindow.xib in Resources */,
+				DCCD7D3F132E4FE800BBAB80 /* kitchensinkViewController.xib in Resources */,
+				DC4E8E0A1463410500E7EE42 /* MainWindow-iPad.xib in Resources */,
+				DC6A6A5513F042D800FF7AC3 /* connections.plist in Resources */,
+				DC20BCFA1470C86900FF124F /* about.png in Resources */,
+				DC20BCFB1470C86900FF124F /* app-icon.png in Resources */,
+				DC20BCFC1470C86900FF124F /* arno.png in Resources */,
+				DC20BCFD1470C86900FF124F /* checkboxselected.png in Resources */,
+				DC20BCFE1470C86900FF124F /* checkbox.png in Resources */,
+				DC20BCFF1470C86900FF124F /* custom1.png in Resources */,
+				DC20BD001470C86900FF124F /* custom2.png in Resources */,
+				DC20BD011470C86900FF124F /* datepicker.png in Resources */,
+				DC20BD021470C86900FF124F /* home.png in Resources */,
+				DC20BD031470C86900FF124F /* large-button.png in Resources */,
+				DC20BD041470C86900FF124F /* mdsl.m4v in Resources */,
+				DC20BD051470C86900FF124F /* picker.png in Resources */,
+				DC20BD061470C86900FF124F /* picture1.png in Resources */,
+				DC20BD071470C86900FF124F /* picture2.png in Resources */,
+				DC20BD081470C86900FF124F /* radiobuttonselected.png in Resources */,
+				DC20BD091470C86900FF124F /* radiobutton.png in Resources */,
+				DC20BD0E1470C92600FF124F /* tv.png in Resources */,
+				DC20BD101470C95300FF124F /* canappi.png in Resources */,
+				DC20BD121470C9DC00FF124F /* app-icon.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DCCD7D42132E4FE800BBAB80 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DCCD7D50132E4FE800BBAB80 /* InfoPlist.strings in Resources */,
+				DCCD7D53132E4FE800BBAB80 /* kitchensinkTests.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		DCCD7D43132E4FE800BBAB80 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DCCD7D1D132E4FE700BBAB80 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DCCD7D33132E4FE800BBAB80 /* main.m in Sources */,
+				DCCD7D36132E4FE800BBAB80 /* kitchensinkAppDelegate.m in Sources */,
+				DCCD7D3C132E4FE800BBAB80 /* kitchensinkViewController.m in Sources */,
+				DC32AF9913C54038003703D9 /* RootController.m in Sources */,
+				DC8854FF13C5DD0500D3760F /* GradientButton.m in Sources */,
+				DC88557C13C5DE3900D3760F /* SBJsonWriter.m in Sources */,
+				DC88557D13C5DE3900D3760F /* SBJsonTokeniser.m in Sources */,
+				DC88557E13C5DE3900D3760F /* SBJsonStreamWriterState.m in Sources */,
+				DC88557F13C5DE3900D3760F /* SBJsonStreamWriter.m in Sources */,
+				DC88558013C5DE3900D3760F /* SBJsonStreamParserState.m in Sources */,
+				DC88558113C5DE3900D3760F /* SBJsonStreamParserAdapter.m in Sources */,
+				DC88558213C5DE3900D3760F /* SBJsonStreamParser.m in Sources */,
+				DC88558313C5DE3900D3760F /* SBJsonParser.m in Sources */,
+				DC88558413C5DE3900D3760F /* NSObject+JSON.m in Sources */,
+				DC88558513C5DE3900D3760F /* Reachability.m in Sources */,
+				DC88558613C5DE3900D3760F /* ASIHTTPRequest.m in Sources */,
+				DC88558713C5DE3900D3760F /* ASINetworkQueue.m in Sources */,
+				DC88558813C5DE3900D3760F /* ASIInputStream.m in Sources */,
+				DC88558913C5DE3900D3760F /* ASIFormDataRequest.m in Sources */,
+				DC88558A13C5DE3900D3760F /* ASIDownloadCache.m in Sources */,
+				DC88558B13C5DE3900D3760F /* ASIAuthenticationDialog.m in Sources */,
+				DC88558C13C5DE3900D3760F /* ASIS3Request.m in Sources */,
+				DC88558D13C5DE3900D3760F /* ASIS3ListRequest.m in Sources */,
+				DC88558E13C5DE3900D3760F /* ASIS3BucketObject.m in Sources */,
+				DC88558F13C5DE3900D3760F /* ASINSStringAdditions.m in Sources */,
+				DC8855B0DC5E12600D3760F /* mapMenuViewController.m in Sources */,
+				DC8855B1DC5E12600D3760F /* webStringViewController.m in Sources */,
+				DC8855B2DC5E12600D3760F /* webURLViewController.m in Sources */,
+				DC8855B3DC5E12600D3760F /* standardButtonViewController.m in Sources */,
+				DC8855B4DC5E12600D3760F /* fontViewController.m in Sources */,
+				DC8855B5DC5E12600D3760F /* labelViewController.m in Sources */,
+				DC8855B6DC5E12600D3760F /* sliderViewController.m in Sources */,
+				DC8855B7DC5E12600D3760F /* playerViewController.m in Sources */,
+				DC8855B8DC5E12600D3760F /* ImagesViewController.m in Sources */,
+				DC8855B9DC5E12600D3760F /* textEntryLayoutMDSLViewController.m in Sources */,
+				DC8855B10C5E12600D3760F /* textEntryViewController.m in Sources */,
+				DC8855B11C5E12600D3760F /* gradientButtonViewController.m in Sources */,
+				DC8855B12C5E12600D3760F /* standardButtonView2Controller.m in Sources */,
+				DC8855B13C5E12600D3760F /* pickersViewController.m in Sources */,
+				DC8855B14C5E12600D3760F /* pickersViewPickerController.m in Sources */,
+				DC8855B15C5E12600D3760F /* pickersViewDatePickerController.m in Sources */,
+				DC8855B16C5E12600D3760F /* detailViewController.m in Sources */,
+				DC8855B17C5E12600D3760F /* contactViewController.m in Sources */,
+				DC8855B18C5E12600D3760F /* buttonViewController.m in Sources */,
+				DC8855B19C5E12600D3760F /* parisViewController.m in Sources */,
+				DC8855B20C5E12600D3760F /* westSamoaViewController.m in Sources */,
+				DC8855B21C5E12600D3760F /* belleViewController.m in Sources */,
+				DC8855B22C5E12600D3760F /* webMenuController.m in Sources */,
+				DC8855B23C5E12600D3760F /* homeViewController.m in Sources */,
+				DC8855B24C5E12600D3760F /* aboutViewController.m in Sources */,
+				DC8855B25C5E12600D3760F /* gradientButtonsMDSLController.m in Sources */,
+				DC8855B26C5E12600D3760F /* standardButtonsMDSLController.m in Sources */,
+				DC8855B27C5E12600D3760F /* fontsMDSLController.m in Sources */,
+				DC8855B28C5E12600D3760F /* labelsMDSLController.m in Sources */,
+				DC8855B29C5E12600D3760F /* imagesMDSLController.m in Sources */,
+				DC8855B30C5E12600D3760F /* standardMapMDSLController.m in Sources */,
+				DC8855B31C5E12600D3760F /* hybridMapMDSLController.m in Sources */,
+				DC8855B32C5E12600D3760F /* satelliteMapMDSLController.m in Sources */,
+				DC8855B33C5E12600D3760F /* playerMDSLController.m in Sources */,
+				DC8855B34C5E12600D3760F /* pickersMDSLController.m in Sources */,
+				DC8855B35C5E12600D3760F /* slidersMDSLController.m in Sources */,
+				DC8855B36C5E12600D3760F /* browserStringMDSLController.m in Sources */,
+				DC8855B37C5E12600D3760F /* actionsMDSLController.m in Sources */,
+				DC8855B38C5E12600D3760F /* browserURLMDSLController.m in Sources */,
+				DC8855B39C5E12600D3760F /* actionViewController.m in Sources */,
+				DC8855B40C5E12600D3760F /* youTubeViewController.m in Sources */,
+				DC32AFF813C54743003703D9 /* PushPinAnnotation.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DCCD7D40132E4FE800BBAB80 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DCCD7D55132E4FE800BBAB80 /* kitchensinkTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DCCD7D4A132E4FE800BBAB80 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DCCD7D20132E4FE700BBAB80 /* kitchensink */;
+			targetProxy = DCCD7D49132E4FE800BBAB80 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DC4E8E081463410500E7EE42 /* MainWindow-iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DC4E8E091463410500E7EE42 /* en */,
+			);
+			name = "MainWindow-iPad.xib";
+			sourceTree = "<group>";
+		};
+		DC6A6A5313F042D800FF7AC3 /* connections.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DC6A6A5413F042D800FF7AC3 /* en */,
+			);
+			name = connections.plist;
+			sourceTree = "<group>";
+		};
+		DCCD7D2E132E4FE800BBAB80 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DCCD7D2F132E4FE800BBAB80 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		DCCD7D37132E4FE800BBAB80 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DCCD7D38132E4FE800BBAB80 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		DCCD7D3D132E4FE800BBAB80 /* kitchensinkViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DCCD7D3E132E4FE800BBAB80 /* en */,
+			);
+			name = kitchensinkViewController.xib;
+			sourceTree = "<group>";
+		};
+		DCCD7D4E132E4FE800BBAB80 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DCCD7D4F132E4FE800BBAB80 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DCCD7D56132E4FE800BBAB80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		DCCD7D57132E4FE800BBAB80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		DCCD7D59132E4FE800BBAB80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "kitchensink/kitchensink-Prefix.pch";
+				INFOPLIST_FILE = "kitchensink/kitchensink-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		DCCD7D5A132E4FE800BBAB80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "kitchensink/kitchensink-Prefix.pch";
+				INFOPLIST_FILE = "kitchensink/kitchensink-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		DCCD7D5C132E4FE800BBAB80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/kitchensink.app/kitchensink";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "kitchensinkTests/kitchensinkTests-Prefix.pch";
+				INFOPLIST_FILE = "kitchensinkTests/kitchensinkTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		DCCD7D5D132E4FE800BBAB80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/kitchensink.app/kitchensink";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "kitchensinkTests/kitchensinkTests-Prefix.pch";
+				INFOPLIST_FILE = "kitchensinkTests/kitchensinkTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DCCD7D1B132E4FE700BBAB80 /* Build configuration list for PBXProject "kitchensink" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DCCD7D56132E4FE800BBAB80 /* Debug */,
+				DCCD7D57132E4FE800BBAB80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DCCD7D58132E4FE800BBAB80 /* Build configuration list for PBXNativeTarget "kitchensink" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DCCD7D59132E4FE800BBAB80 /* Debug */,
+				DCCD7D5A132E4FE800BBAB80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DCCD7D5B132E4FE800BBAB80 /* Build configuration list for PBXNativeTarget "kitchensinkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DCCD7D5C132E4FE800BBAB80 /* Debug */,
+				DCCD7D5D132E4FE800BBAB80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DCCD7D18132E4FE700BBAB80 /* Project object */;
+}
