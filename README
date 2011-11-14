@@ -1,0 +1,10 @@
+This repository contains sample mdsl files as well as android and Xcode projects 100% generated (other than the resource files).
+
+connection-sample-06052011.mdsl 	sample of connections to 3rd party Web APIs
+kitchensink-v1.1-11042011.mdsl 		Canappi's kitchensink 
+twilio-06092010.mdsl 			A simple app using Twilio APIs (account, sms)
+twitter.mdsl 				A simple twitter feed application
+wso2.mdsl 				An example of data services using WSO2 Data Services Server
+youtube.mdsl 				An app exposing a YouTube channel (RSS feed)
+yp.mdsl 				The Yellow Pages app, which was demonstrated in our webinar with AT&T
+zillow-v1.0.mdsl			An app using the Zillow APIs
