@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- ****************************************************************************************************
+     
+ Disclaimer: IMPORTANT:  This artifact is supplied to you by Convergence Modeling LLC.
+ in consideration of your agreement to the following terms, and your use, installation, 
+ modification or redistribution of this acceptance constitutes acceptance of these terms.  
+ If you do not agree with these terms, please do not use, install, modify or redistribute 
+ this Convergence Modeling LLC artifact.
+ 
+ In consideration of your agreement to abide by the following terms, and subject
+ to these terms, Convergence Modeling LLC grants you a personal, non-exclusive license, 
+ to use, reproduce, modify and redistribute this artifact, with or without
+ modifications, in source and/or binary forms. 
+ 
+ Except as expressly stated in this notice, no other rights or licenses, express or implied, 
+ are granted by Convergence Modeling LLC herein, including but not limited to any patent rights 
+ that may be infringed by your derivative works or by other works in which the Convergence Modeling 
+ artifact may be incorporated.
+ 
+ This artifact is provided by Convergence Modeling LLC on an "AS IS" basis. CONVERGENCE MODELING LLC 
+ MAKES NO WARRANTIES, EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION THE IMPLIED WARRANTIES OF 
+ NON-INFRINGEMENT, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE, REGARDING THE CONVERGENCE 
+ MODELING LLC artifact OR ITS USE AND OPERATION ALONE OR IN COMBINATION WITH YOUR PRODUCTS.
+ 
+ IN NO EVENT SHALL CONVERGENCE MODELING LLC BE LIABLE FOR ANY SPECIAL, INDIRECT, INCIDENTAL OR CONSEQUENTIAL 
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, 
+ OR PROFITS; OR BUSINESS INTERRUPTION) ARISING IN ANY WAY OUT OF THE USE, REPRODUCTION, MODIFICATION AND/OR
+ DISTRIBUTION OF CONVERGENCE MODELING LLC artifact, HOWEVER CAUSED AND WHETHER UNDER THEORY OF CONTRACT, TORT 
+ (INCLUDING NEGLIGENCE), STRICT LIABILITY OR OTHERWISE, EVEN IF CONVERGENCE MODELING LLC HAS BEEN ADVISED OF 
+ THE POSSIBILITY OF SUCH DAMAGE.
+
+ 
+     ****************************************************************************************************-->
+
+<resources>
+        <string name="app_name">yhere</string>
+        <string name="hello">hello</string>	 
+	 
+<string name="searchView_Results">Results</string>	 
+	 
+ 	
+   	  
+   	  
+   	 
+<string name="restaurantView_Restaurants">Restaurants</string>	 
+	 
+ 	
+   	  
+   	  
+   	 
+<string name="groceryView_Grocery_Stores">Grocery Stores</string>	 
+	 
+ 	
+   	  
+   	  
+   	 
+<string name="gasStationView_Gas_Stations">Gas Stations</string>	 
+	 
+ 	
+   	  
+   	  
+   	 
+<string name="theaterView_Theaters">Theaters</string>	 
+	 
+ 	
+   	  
+   	  
+   	 
+<string name="couponView_Coupons">Coupons</string>	 
+	 
+ 	
+   	  
+   	  
+   	 
+<string name="lubeView_Oil_Change">Oil Change</string>	 
+	 
+ 	
+   	  
+   	  
+   	 
+<string name="gameView_Game_Stores">Game Stores</string>	 
+	 
+ 	
+   	  
+   	  
+   	 
+<string name="bakeryView_Bakeries">Bakeries</string>	 
+	 
+ 	
+   	  
+   	  
+   	 
+<string name="repairView_Repair">Repair</string>	 
+	 
+ 	
+   	  
+   	  
+   	 
+<string name="homeView_Home">Home</string>	 
+	 
+<string name="homeView_v1315694574113"></string>     	
+   	 
+<string name="homeView_v1315694574135"></string>     	
+   	 
+<string name="homeView_v1315694574157"></string>     	
+   	 
+<string name="homeView_v1315694574179"></string>     	
+   	 
+<string name="homeView_v1315694574201"></string>     	
+   	 
+<string name="homeView_v1315694574223"></string>     	
+   	 
+<string name="homeView_v1315694574245"></string>     	
+   	 
+<string name="homeView_v1315694574267"></string>     	
+   	 
+<string name="homeView_v1315694574290"></string>     	
+   	 
+ 	
+   	 
+<string name="homeView_Search">Search</string>     	
+   	  
+   	  
+   	 
+<string name="settingsView_Settings">Settings</string>	 
+	 
+<string name="settingsView_Your_Zip_code">Your Zip code</string> 	
+   	 
+ 	
+   	 
+<string name="settingsView_Update">Update</string>     	
+   	  
+   	  
+   	  
+   		<string name="default_select_time">Select Time...</string>
+   		<string name="default_select_date">Select Date...</string>
+</resources>
