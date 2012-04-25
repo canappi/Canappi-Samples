@@ -181,13 +181,35 @@
             id valueForElement = [input objectForKey:element] ;
             if ([valueForElement isKindOfClass:[NSArray class]]) {
                 //Not really supported, would generally require some custom code
-                //We just return the first element of the array
+                //We just return the first element of the array as a space delimited
+                //concatenation of all the dictionary values
                 NSArray *a = (NSArray *)valueForElement ;
                 if ([a count] > 0) {
-                    if (tag != nil) {
-                            [output setValue:[a objectAtIndex:0] forKey:[NSString stringWithFormat:@"%@%@",tag, element]];
-                        } else [output setValue:[a objectAtIndex:0] forKey:element] ;
-                }
+                    id row0 = [a objectAtIndex:0] ;
+                    if ([row0 isKindOfClass:[NSDictionary class]]) {
+                        NSDictionary *d = (NSDictionary *)row0 ;
+                        NSEnumerator *subkeys = [row0 keyEnumerator];
+                        NSMutableString *subvalue = [NSMutableString string] ;
+                        id subkey = nil ;
+                        while (subkey = [subkeys nextObject]) {
+                            id value = [d objectForKey:subkey] ;
+                            if (value) [subvalue appendString:value];
+                            else [subvalue appendString:@""];
+                            [subvalue appendString:@" "];
+                        }
+                        if ([subvalue length]>0) {
+                            if (tag != nil) {
+                                [output setValue:subvalue forKey:[NSString stringWithFormat:@"%@%@",tag, element]];
+                            } else [output setValue:subvalue forKey:element] ;
+                        } else {
+                            if (tag != nil) {
+                                [output setValue:@"" forKey:[NSString stringWithFormat:@"%@%@",tag, element]];
+                            } else [output setValue:@"" forKey:element] ;
+                        }
+                    } else {
+                        //we don't support arrays of arrays
+                    }
+                 }
             } else {
                 if ([valueForElement isKindOfClass:[NSDictionary class]]) {
             		if (tag != nil) {
