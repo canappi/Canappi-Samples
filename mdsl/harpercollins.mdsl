@@ -1,0 +1,80 @@
+package com.canappi.connectors.harpercollins ;
+
+connection search {
+	operation getBooks GET 'http://api.harpercollins.com/api/v2/hcapim?apiname=catalog&format=XML&param5=${author}&apikey=emcnb842erhgquwsucwqrpn4' author {
+		protocol HTTP ; 
+		timeout 60 ;
+		resultSet 'OpenBook_API' ('Product_Group') ;
+	}
+}
+
+mapping bookMapping {
+	{"Product_Group_Title" : "Product_Group_Title" },
+	{"ISBN" : "Products.ISBN" },
+	{"Author1" : "Products.Author1" },
+	{"CoverImageURL_Medium" : "Products.CoverImageURL_Medium" },
+	{"Product_Group_TitleIPad" : "Product_Group_Title" },
+	{"ISBNIPad" : "Products.ISBN" },
+	{"Author1IPad" : "Products.Author1" },
+	{"CoverImageURL_MediumIPad" : "Products.CoverImageURL_Medium" },
+	{"author" : "author"}
+}
+
+
+layout bookRowLayoutIPad {
+	label Product_Group_TitleIPad '' (115,3,400,30)  { color blue ; Left ; }
+	//label ISBNL 'ISBN:' (115,35,50,25)  { Left ; without bindings ; }
+	label ISBNIPad '' (165,35,300,25)  { Left ; }
+	label Author1IPad '' (115,60,300,25)  { Left ; }
+	image CoverImageURL_MediumIPad '' (5,5,100,150)  { '' ; }
+}
+
+layout booksRowLayout {
+	label Product_Group_Title '' (115,3,200,50)  { color blue ; Left ; lines 2 ; }
+	label ISBNL 'ISBN:' (115,55,50,25)  { Left ; without bindings ; }
+	label ISBN '' (165,55,150,25)  { Left ; }
+	label Author1 '' (115,80,300,25)  { Left ; }
+	image CoverImageURL_Medium '' (5,5,100,150)  { '' ; }
+}
+
+layout searchLayoutIPad {
+	label searchLabel 'Author name:' (20,100,120,30) { Left ; }
+	text author (140,100, 200, 30 ) { Left ; border rounded ; } 
+	button submit 'Search' (350,100,70,30) {
+		action search invokeOperation search getBooks ;
+	}
+	table booksIPad (9999,140,768,884) {
+		bookRowLayoutIPad[] ;
+		rowHeight 160 ;
+	}
+}
+
+layout searchLayout {
+	label searchLabel 'Author:' (5,55,120,30) { Left ; }
+	text author (70,55, 200, 30 ) { Left ; border rounded ; } 
+	button submit 'Search' (200,55,70,30) {
+		action search invokeOperation search getBooks ;
+	}
+	table books (9999,90,320,310) {
+		booksRowLayout[] ;
+		rowHeight 160 ;
+	}
+	
+	tablet searchLayoutIPad ;
+}
+
+view homeView 'Search' {
+	color white ;
+	controls {
+		layout searchLayout 
+			bindings search
+			mapping bookMapping  
+			 ;
+	}
+}
+
+main bookSearchApp {
+	navigationBar ;
+	start homeView ;
+	menu { homeView }
+}

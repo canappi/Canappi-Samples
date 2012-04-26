@@ -1,0 +1,51 @@
+package com.canappi.connectors.locgen ;
+
+
+connection locations {
+	operation init getLocations GET 'http://api.locationgenome.com/v3/locgen/search/JSON/?lat=47&long=-122&radius=100&title=park&outputfields=Title,geo_distance&start=0&rows=10&sort=distance&apikey={YOUR_API_KEY}' _title {
+		protocol HTTP ; json ; resultSet 'response' ('docs') ;
+	} ;
+	
+}
+
+connection recommendations {
+	operation init getLocations GET 'http://api.locationgenome.com/v3/locgen/related/json/?lat=47.61991&long=-122.34866&radius=100&documentid=354&outputfields=Title,geo_distance,documentid,lat,long&start=0&rows=10&apikey={YOUR_API_KEY}' {
+		protocol HTTP ; json ; resultSet 'Recommendation' ('docs') ;
+	} ;
+	
+}
+
+layout recommendationRow {
+	label Title '' (5,10,300,50) { color blue ; Left ; lines 2 ; } 
+	//label geo_distance '' (5,60,300,20) { color blue ; Left ; lines 2 ; } 
+	 
+}
+
+layout resultLayout {
+	table twitterTable {
+		recommendationRow[] ;
+		rowHeight 90 ;
+	}
+}
+
+view recView 'Recommendations' {
+	controls {
+		layout resultLayout bindings recommendations ;
+	}
+	icon 'home.png' ;
+}
+
+view locView 'Parks' {
+	controls {
+		layout resultLayout bindings locations ;
+	}
+	icon 'home.png' ;
+}
+
+
+main locgenApp {
+	splashscreen 'twitter.png' ;
+	navigationBar ;
+	start locView ;
+	menu { locView, recView }
+}

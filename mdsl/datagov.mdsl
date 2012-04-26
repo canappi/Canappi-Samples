@@ -1,0 +1,39 @@
+package com.canappi.connectors.datagov ;
+
+connection adoptionEvents {
+	operation init getConditionsForZip GET 'https://www.datakc.org/api/views/p98f-kyer/rows.xml?accessType=DOWNLOAD' {
+		protocol HTTP ; resultSet 'row' ('row') ;
+	}
+}
+
+layout eventRowLayout {
+	label eventname '' (5,3,300,30)  { color blue ; Left ; }
+	label startdatetime '' (5,35,300,25)  { Left ; }
+	label _location '' (5,60,300,25)  { Left ; }
+	label address '' (5,85,300,)  { Left ; }
+	label city '' (5,110,200,)  { Left ; }
+	label state '' (215,110,40,)  { Left ; }
+	label zip '' (250,110,60,)  { Left ; }
+}
+
+layout eventsLayout {
+	table events {
+		eventRowLayout[] ;
+		rowHeight 135 ;
+	}
+}
+
+view homeView 'Pet Adoption Events' {
+	color white ;
+	controls {
+		layout eventsLayout 
+			bindings adoptionEvents 
+			 ;
+	}
+}
+
+main petAdoptionApp {
+	navigationBar ;
+	start homeView ;
+	menu { homeView }
+}

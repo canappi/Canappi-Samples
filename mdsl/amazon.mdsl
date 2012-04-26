@@ -1,0 +1,121 @@
+package com.canappi.connectors.s3 ;
+
+
+connection s3Pictures { 
+	
+	//This is an on board data source 
+	//This data source can be bound to a table for instance
+	//------------------------------------------------------------------------------------
+		{ "pictures" : [ 
+			{ "picture" : [ 
+				{ "bucketName" : "canappi-bucket-test" }, 
+				{ "imageName" : "FC8F998F-D6AB-4B02-BFAE-2AEF973E5A20.jpg" }, 
+				{ "imageTitle" : "Image 1" }
+		
+				]  
+			},
+			{ "picture" : [ 
+				{ "bucketName" : "canappi-bucket-test" }, 
+				{ "imageName" : "hallo4.jpg" }, 
+				{ "imageTitle" : "Image 2" }
+		
+				]  
+			},
+			{ "picture" : [ 
+				{ "bucketName" : "canappi-bucket-test" }, 
+				{ "imageName" : "hallo2.jpg" }, 
+				{ "imageTitle" : "Image 1" }
+		
+				]  
+			},
+			{ "picture" : [ 
+				{ "bucketName" : "canappi-bucket-test" }, 
+				{ "imageName" : "hallo3.jpg" }, 
+				{ "imageTitle" : "Image 1" }
+		
+				]  
+			}
+		 	]   
+		}  ;
+}
+
+
+
+layout displayPicture {
+	text s3Bucket 'canappi-bucket-test' (-100,-100,40,30) { Left ; }
+	image fromCamera (10,60,106,160) {
+		store s3Bucket filename pictureLabel ;
+	}
+	text pictureLabel 'eso1210a.jpg' (10,250,150,30) { Left ; border rounded ;}
+}
+
+
+layout takePicture {
+	text s3Bucket 'canappi-bucket-test' (-100,-100,40,30) { Left ; }
+	/*image fromCamera (10,60,106,160) {
+		action pickFromCamera ;
+	}*/
+	
+	image fromCamera (10,60,106,160) {
+		'halloween10-31-11.jpg';
+	}   
+	  
+	text pictureLabel (10,250,150,30) { Left ; placeholder 'picture name' ; border rounded ;}
+	button saveToS3 'Save' (10,300,150,30) {
+		Gradient GreenConfirm ;
+		action saveToS3 store fromCamera bucket s3Bucket filename pictureLabel generated ; 
+	}
+	
+	
+}
+
+layout pictureRow {
+	
+	text imageName (160,5,150,30) { Left ; } 
+	text bucketName (160,40,150,30) { Left ; } 
+	text bucketTitle (160,75,150,30) { Left ; } 
+	image s3picture (5,5,150,90) {
+		store  bucketName filename imageName ;
+	}
+}
+
+layout displayTable {
+	
+	table s3pictures {
+		pictureRow[] ;
+		rowHeight 100 ;
+	}
+	
+}
+
+view homeView 'Store' {
+
+	controls { 
+		layout takePicture ;
+	}
+	
+}
+
+view displayPicture 'View' {
+
+	controls {
+		layout displayPicture ;
+	}
+	
+}
+
+view displayTable 'Table' {
+
+	controls {
+		layout displayTable bindings s3Pictures ;
+	}
+	
+}
+
+
+main amazonS3 {
+	
+	navigationBar ;
+	start homeView ;
+	menu { homeView, displayPicture , displayTable } 
+}

@@ -1,0 +1,37 @@
+package com.canappi.socket ;
+
+connection socket {
+	
+	operation getData COMMAND 'getdevices\\r' command {
+		protocol TCP ; host '204.232.205.132' (9002) ; csv ;
+	}
+	
+}
+
+layout testSocketLayout {
+	
+	text command 'getdevices' (40,100,200,30) { Left ; border rounded ; }
+	
+	button submit 'Command' (40,150,200,30) {
+		action sendCommand invokeOperation socket getData ;
+	}
+
+	text tag0 (40,200,200,30) { Left ; border rounded ; }
+
+}
+
+view testSocketView {
+	
+	controls {
+		layout testSocketLayout bindings socket ;
+	}
+	
+}
+
+main socketapp {
+	
+	navigationBar (blue) ;
+	start testSocketView ;
+	menu { testSocketView } 
+	
+}

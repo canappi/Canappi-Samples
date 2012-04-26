@@ -1,0 +1,57 @@
+
+package com.canappi.connectors.wikipedia ;
+
+
+connection wikipedia {
+	operation init search GET 'http://en.wikipedia.org/w/api.php?action=query&list=search&format=xml&srsearch=${search}&srnamespace=0&srwhat=text&srprop=snippet&srredirects&srlimit=10' search {
+		protocol HTTP ; resultSet 'search' ('p') ;
+	} 
+}
+
+layout wikiRow {
+	label _title '' (5,5,300,50) { color blue ; Left ; lines 2 ; } 
+	web snippet (5,60,300,150) {  } 
+}
+
+layout wikipediaLayout {
+	table wikipediaTable {
+		wikiRow[] ;
+		rowHeight 215 ;
+	}
+	
+	text search (-10,-100,20,20) ;
+}
+
+layout searchLayout {
+	
+	text search (50,100,220,30) { Left ; border rounded ; } 
+	
+	button submit 'Submit' (50,200,220,30) { 
+		Gradient BlackActionSheet ; 
+		action showResults navigate to resultView with search ; 
+	} 
+}
+
+view resultView 'Results' {
+	controls {
+		layout wikipediaLayout bindings wikipedia  ;
+	}
+	icon 'home.png' ;
+}
+
+view searchView 'Search' {
+	controls {
+		layout searchLayout  ;
+	}
+	icon 'home.png' ;
+}
+
+main wikiapp {
+	splashscreen 'wiki.png' ;
+	navigationBar (darkGray) ;
+	start searchView ;
+	menu { searchView , resultView }
+}
+
+
+

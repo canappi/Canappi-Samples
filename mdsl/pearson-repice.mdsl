@@ -1,0 +1,106 @@
+package com.canappi.connectors.pearson ;
+
+connection pearsonRecipes {
+	operation init getApetizerRecipes GET 'http://api.pearson.com/kitchen-manager/v1/courses/appetizers?apikey=b05777253ba1c9e5b486bdf558ccb7bb' {
+		protocol HTTP ; json ;
+		timeout 60 ;
+		resultSet 'recipes'	 ;
+	}
+}
+
+connection pearsonRecipeDetail {
+	operation init getRecipeDetail GET 'http://api.pearson.com/kitchen-manager/v1/recipes/${recipeid}?apikey=b05777253ba1c9e5b486bdf558ccb7bb' recipeid {
+		protocol HTTP ; json ;
+		timeout 60 ;
+		resultSet 'ingredients'	 ;
+	}
+}
+
+mapping recipeMapping {
+	{"recipeid" : "id" },
+	{"name" : "name" },
+	{"cuisine" : "cuisine" },
+	{"thumb" : "thumb" },
+	{"url" : "url" }
+	{"idIPad" : "id" },
+	{"nameIPad" : "name" },
+	{"cuisineIPad" : "cuisine" },
+	{"thumbIPad" : "thumb" },
+	{"urlIpad" : "url" }
+}
+
+
+layout recipeRowLayoutIPad {
+	label idIPad '' (-155,3,20,50)  { color blue ; Left ; lines 2 ; }
+	label nameIPad '' (155,3,500,30)  { color blue ; Left ; }
+	label cuisineIPad '' (155,35,300,25)  { Left ; }
+	label urlIPad '' (-500,5,100,150)  { Left  ; }
+	image thumb '' (5,5,150,150)  { '' ; }
+}
+
+layout recipeRowLayout {
+	label recipeid '' (-155,3,20,50)  { color blue ; Left ; lines 2 ; }
+	label name '' (155,3,200,50)  { color blue ; Left ; lines 2 ; }
+	label cuisine '' (155,55,150,25)  { Left ; }
+	label url '' (-500,5,100,150)  { Left ; }
+	image thumb '' (5,5,150,150)  { '' ; }
+}
+
+layout recipeDetailRowLayout {
+	label recipeid '' (-155,3,20,50)  { color blue ; Left ; lines 2 ; }
+	label name '' (5,3,200,50)  { color blue ; Left ; lines 2 ; }
+	label quantity '' (5,55,60,25)  { Left ; }
+	label unit '' (70,55,60,25)  { Left ; }
+	label preparation '' (5,70,150,150)  { Left ; }
+}
+
+layout recipeLayoutIPad {
+	table booksIPad {
+		recipeRowLayoutIPad[] ;
+		rowHeight 160 ;
+		action openRecipe navigate to recipeView with idIPad as recipeid ;
+	}
+}
+
+layout recipeLayout {
+	table books  {
+		recipeRowLayout[] ;
+		rowHeight 160 ;
+		action openRecipe navigate to recipeView with recipeid as recipeid ;
+	}
+	
+	tablet recipeLayoutIPad ;
+}
+
+layout recipeDetailLayout {
+	table ingredients  {
+		recipeDetailRowLayout[] ;
+		rowHeight 160 ;
+	}
+	
+}
+
+view recipeView 'Search' {
+	color white ;
+	controls {
+		layout recipeDetailLayout 
+			bindings pearsonRecipeDetail
+			 ;
+	}
+}
+
+view homeView 'Search' {
+	color white ;
+	controls {
+		layout recipeLayout 
+			bindings pearsonRecipes
+			mapping recipeMapping
+			 ;
+	}
+}
+
+main recipeApp {
+	navigationBar ;
+	start homeView ;
+	menu { homeView }
+}

@@ -1,0 +1,15 @@
+package p ;
+
+layout l {
+	label l 'Hello World !' (100,100,100,30) { }
+}
+
+view v {
+	controls {
+		layout l ;
+	}
+}
+
+main m {
+	menu { v }
+}

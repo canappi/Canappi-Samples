@@ -1,0 +1,111 @@
+package com.canappi.connectors.flickr ;
+
+connection flickr {
+	//Get the thumbnails from a flickr gallery
+	//------------------------------------------------------------------------------------
+	operation init getPhotos GET 'http://api.flickr.com/services/rest/?method=flickr.galleries.getPhotos&api_key=b7639894a0158bb65256cdc41357946d&format=rest&gallery_id=74655121-72157628935723153' {
+		resultSet 'photos' ;
+		join getSizes on photo_id = id where _label = 'Square';
+	}
+
+	operation getSizes  GET 'http://api.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key=b7639894a0158bb65256cdc41357946d&format=rest' photo_id {
+		resultSet 'sizes' ;
+	}
+}
+
+connection flickr2 {
+	//Get the flickr picture selected from a thumbnail
+	//------------------------------------------------------------------------------------
+	operation init getPicture  GET 'http://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg' farm server _id secret  {
+		resultSet image 'photo' ('source') ;
+	}
+}
+
+style myStyle {
+	font 'Helvetica-Bold' ; size 22 ; color white ; backgroundColor black ; Left ;
+}
+
+layout flickrPhotoLayout {
+
+	text _title '' (10,50,300,30) { style myStyle ; without bindings ;  } 
+	image source (10,80) { }
+
+	text _width '' (-100,-100,20,20) { } 
+	text _height '' (-100,-100,20,20) { } 
+	text _label '' (-100,-100,20,20) { } 
+	text media '' (-100,-100,20,20) { } 
+	text owner '' (-100,-100,20,20) { } 
+	text secret '' (-100,-100,20,20) { } 
+	text farm '' (-100,-100,20,20) { } 
+	text server '' (-100,-100,20,20) { } 
+	text _id '' (-100,-100,20,20) { } 
+
+}
+
+layout flickrThumbnail {
+	//A thumbnail (source) with a series of hidden parameters
+	//------------------------------------------------------------------------------------
+	image source (12,12,75,75) {
+
+	} 
+	//Hidden parameters used to retrievethe picture
+	//Note that all parameter declarations _XXX correspond to reserved keywords in mdsl
+	// _width is used as "width" in the generated code
+	//------------------------------------------------------------------------------------
+	text _width '' (-100,-100,20,20) { } 
+	text _height '' (-100,-100,20,20) { } 
+	text _label '' (-100,-100,20,20) { } 
+	text media '' (-100,-100,20,20) { } 
+	text owner '' (-100,-100,20,20) { } 
+	text secret '' (-100,-100,20,20) { } 
+	text farm '' (-100,-100,20,20) { } 
+	text server '' (-100,-100,20,20) { } 
+	text _title '' (-100,-100,20,20) { } 
+	text _id '' (-100,-100,20,20) { } 
+}
+
+layout flickrLayout {
+	//A gallery control which displays the thumbnails of a picture in a flick gallery
+	//The action navigates to a view which consumes id, secret, server and farm values
+	//to retrieve the picture. Note that since id is a reserved keyword it is declared as _id
+	//------------------------------------------------------------------------------------
+	gallery flickr (10,55,300,320) {
+		flickrThumbnail[] ; 
+		cellHeight 100 ;
+		cellWidth 100 ; 
+		action displayPicture navigate to flickrPhotoView with _id secret server farm _title ;
+	}
+}
+
+view flickrView   'Album'  {
+	//Displays a flickr gallery 
+	//------------------------------------------------------------------------------------
+		color black ;
+		controls {
+			layout flickrLayout 
+				bindings flickr ; 
+		}
+
+		hide tabs bar;
+		back 'Back';
+}
+
+view flickrPhotoView   'Album'  {
+	//Displays a flickr picture 
+	//------------------------------------------------------------------------------------  
+		color black ;
+		controls {
+			layout flickrPhotoLayout 
+				bindings flickr2 ; 
+		}
+
+		hide tabs;
+		back 'Back';
+}
+
+main flickrApp {
+		//splashscreen 'yourSplashScreen.png' ;
+		navigationBar ;
+		start flickrView ;
+		menu { flickrView }
+}

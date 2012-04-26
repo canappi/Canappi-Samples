@@ -1,0 +1,45 @@
+package com.canappi.connectors.buddy ;
+
+
+connection faceAPI {
+	
+	operation getFaceInfo GET 'http://api.face.com/faces/detect.json?api_key={YOUR_KEY}&api_secret={YOUR_SECRET}&urls=${store}/${image}' _store _image  {
+		protocol HTTP ; json ; resultSet 'photos' ('tags') ;
+	}
+	
+}
+
+layout homeLayout {
+	
+	text _store 'http://www.ebpml.org' (20,100,200,30) { Left ; border rounded ; }
+	text _image 'about.1.jpg' (20,140,200,30) { Left ; border rounded ; }
+	button findInfo 'Find Info' (20,200,200,30) {
+		Gradient GreenConfirm;
+		action findIndo invokeOperation faceAPI getFaceInfo ;
+	}
+	
+	label smilingL 'Smiling' (20,250,100,30) { Left ;}
+	text attributessmilingvalue (120,250,100,30) { Left ; border rounded ; } 
+	label glassesL 'Has glasses' (20,290,100,30) { Left ;}
+	text attributesglassesvalue (120,290,100,30) { Left ; border rounded ; } 
+	label genderL 'Gender' (20,330,100,30) { Left ;}
+	text attributesgendervalue (120,330,100,30) { Left ; border rounded ; } 
+}
+
+view homeView 'Home' {
+	
+	controls {
+		layout homeLayout bindings faceAPI ;
+	}
+	
+}
+
+main faceApp {
+	
+	navigationBar ;
+	start homeView ;
+	
+	menu { homeView } 
+
+	debug ;
+}

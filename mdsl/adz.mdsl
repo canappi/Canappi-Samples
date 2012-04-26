@@ -1,0 +1,532 @@
+package com.canappi.magazine.adz ;
+
+
+connection usergrid {
+	operation init getAccessToken GET 'http://api.usergrid.com/canappi/token?grant_type=client_credentials&client_id=b3U6wY8K7IXZEeGAYxIxOA3qXw&client_secret=b3U6MmlkKiwj5UHSYsvgRkCj9obgM0A' {
+		protocol HTTP ; json ; wrapped ;
+	}
+	 
+	operation createUser POST 'http://api.usergrid.com/canappi/users?access_token=${access_token}' username firstName lastName zip age interest access_token {
+		protocol HTTP ; json ;
+	}
+}
+
+connection usergrid2 {
+	operation init getAccessToken GET 'http://api.usergrid.com/canappi/token?grant_type=client_credentials&client_id=b3U6wY8K7IXZEeGAYxIxOA3qXw&client_secret=b3U6MmlkKiwj5UHSYsvgRkCj9obgM0A' {
+		protocol HTTP ; json ; wrapped ;
+		join getUserByUsername on access_token = access_token ;
+	}
+	
+	operation getUserByUsername GET 'http://api.usergrid.com/canappi/users?filter=username=\'${username}\'&access_token=${access_token}' username access_token {
+		protocol HTTP ; json ; resultSet 'entities' ;
+	}
+}
+
+
+connection tweets {
+	operation init getMyTweets 
+		GET 'http://twitter.com/statuses/user_timeline/geekwire.xml' {
+		protocol HTTP ; 
+	} ;
+}
+
+mapping twitterMapping { {"tweet":"text"} } 
+
+layout twitterRow {
+	label tweet '' (50,10,600,50) { color blue ; Left ; lines 2 ; } 
+	//label created_at '' (5,60, 300 , 25 ) { Right ; } 
+}
+
+
+layout twitterLayout {
+	table twitterTable {
+		twitterRow[] ;
+		rowHeight 90 ;
+		action navigateTo openBrowser 'tweet' ;
+	}
+}
+
+layout settingsLayout {
+	text access_token (-100,-100,20,20)  { Left ; } 
+	image banner (650, 9999, 102,960) {
+		'page-banner.png' ;
+	}
+	label fnameLabel 'First Name' (50,80,150,30) {font 'Helvetica' ; size 22 ; Left ;}
+	label lnameLabel 'Last Name' (,120, , ) {font 'Helvetica' ; size 22 ; Left ;}
+	text firstName (200,80,300,30) { font 'Helvetica' ; size 22 ;Left ; border rounded ; }
+	text lastName (,120,,) { font 'Helvetica' ; size 22 ;Left ; border rounded ; }
+
+	label zipLabel 'Zip' (50,160 ,60,30) { font 'Helvetica' ; size 20 ; Left ; } 
+
+	text zip (200,,90,30) { font 'Helvetica' ; size 20 ; Left ; border rounded ;} 
+	
+
+	picker country 'Interest' (50,240,150,35) {
+		components 1;
+		rows 7 ;
+		data [['Clothing','Cars','Electronics','Food','Education','Health','Home']] ;
+	}
+	
+	label emailLabel 'Email' (50,200,100,25) {font 'Helvetica' ; size 20 ;Left ;}
+	text username (200,,200,25) { Left ; border rounded ; }
+
+	label ageLabel 'Age' (50,290,100,25) {font 'Helvetica' ; size 20 ;Left ;}
+	text age (200,,200,25) { Left ; border rounded ; }
+
+	button submit 'Submit' (100,340,120,30) {
+		Gradient RedDelete ;
+		action saveToUserGrid 
+			update defaults 
+			invokeOperation usergrid createUser ;
+	}	
+	
+}
+
+layout editoLayout {
+	
+	image banner (9999,100,768,200) {
+		'edito.png' ;
+	}
+	
+	image john (120, 300) {
+		'john-large.png' ;
+	}
+	
+	label edito 'Edito' (300,400,100,50) { 
+			font 'TimesNewRomanPS-BoldMT' ; size 36 ; color rgb(216,76,0) ; Left ; 
+	} 
+		
+	web editorial (120, 550 , 550 , 380) {
+		load 'edito' ;
+	}
+	
+	text access_token (-100,-100,20,20) { Left ; }
+}
+
+layout aboutLayout {
+	image banner (650, 9999, 102,960) {
+		'page-banner.png' ;
+	}
+
+	label _title 'About' (50,200,600,50) { 
+			font 'TimesNewRomanPS-BoldMT' ; size 38 ; color rgb(216,76,0) ; Left ; lines 2 ;
+	} 
+		
+	web editorial (120, 250 , 450 , 500) {
+		load 'about' ;
+	}
+
+	button john  (120, 800,100,100){
+		Custom ;
+		image 'john.png' ;
+		action gotoTeamView navigate to teamView ;
+	}
+
+	button todd  (320, 800,100,100){
+		Custom ;
+		image 'todd.png' ;
+		action gotoTeamView navigate to teamView ;
+	}
+
+	button rebecca  (520, 800,100,100){
+		Custom ;
+		image 'rebecca.png' ;
+		action gotoTeamView navigate to teamView ;
+	}
+
+}
+
+layout teamLayout {
+	
+	image banner (650, 9999, 102,960) {
+		'page-banner.png' ;
+	}
+
+	label _title 'Team' (50,200,600,50) { 
+			font 'TimesNewRomanPS-BoldMT' ; size 38 ; color rgb(216,76,0) ; Left ; lines 2 ;
+	} 
+		
+	web editorial (120, 250 , 450 , 500) {
+		load 'about' ;
+	}
+
+
+}
+
+
+layout articlesLayout {
+	image banner (650, 9999, 102,960) {
+		'page-banner.png' ;
+	}
+
+	label _title 'Kickstarter kids: Watch these Seattle teens pitch their new camera dolly business idea' (50,120,600,90) { 
+			font 'TimesNewRomanPS-BoldMT' ; size 28 ; color rgb(216,76,0) ; Left ; lines 3 ;
+	} 
+		
+	web editorial (120, 230 , 450 , 480) {
+		load 'article1' ;
+	}
+
+
+	button next (650,900,100,30) { 
+		Custom ;
+		image 'next.png' ;
+		action next navigate to ad1View ;
+	}
+}
+
+layout article2Layout {
+	image banner (650, 9999, 102,960) {
+		'page-banner.png' ;
+	}
+
+	label _title 'Kickstarter kids: Watch these Seattle teens pitch their new camera dolly business idea' (50,120,520,90) { 
+			font 'TimesNewRomanPS-BoldMT' ; size 28 ; color rgb(216,76,0) ; Left ; lines 3 ;
+	} 
+		
+	web editorial (120, 230 , 450 , 480) {
+		load 'article2' ;
+	}
+
+    button previous (50,900,100,30) { 
+		Custom ;
+		image 'previous.png' ;
+		action previous navigate back ;
+	}
+
+	button next (650,900,100,30) { 
+		Custom ;
+		image 'next.png' ;
+		action next navigate to ad1View ;
+	}
+}
+
+layout article3Layout {
+	image banner (650, 9999, 102,960) {
+		'page-banner.png' ;
+	}
+
+	label _title 'Kickstarter kids: Watch these Seattle teens pitch their new camera dolly business idea' (50,120,520,90) { 
+			font 'TimesNewRomanPS-BoldMT' ; size 28 ; color rgb(216,76,0) ; Left ; lines 3 ;
+	} 
+		
+	web editorial (120, 230 , 450 , 480) {
+		load 'article3' ;
+	}
+
+    button previous (50,900,100,30) { 
+		Custom ;
+		image 'previous.png' ;
+		action previous navigate back ;
+	}
+
+	button next (650,900,100,30) { 
+		Custom ;
+		image 'next.png' ;
+		action next navigate to ad1View ;
+	}
+}
+
+layout article4Layout {
+	image banner (650, 9999, 102,960) {
+		'page-banner.png' ;
+	}
+
+	label _title 'Kickstarter kids: Watch these Seattle teens pitch their new camera dolly business idea' (50,120,520,90) { 
+			font 'TimesNewRomanPS-BoldMT' ; size 28 ; color rgb(216,76,0) ; Left ; lines 3 ;
+	} 
+		
+	web editorial (120, 230 , 450 , 480) {
+		load 'article4' ;
+	}
+
+    button previous (50,900,100,30) { 
+		Custom ;
+		image 'previous.png' ;
+		action previous navigate back ;
+	}
+
+
+	button next (650,900,100,30) { 
+		Custom ;
+		image 'next.png' ;
+		action next navigate to ad1View ;
+	}
+}
+
+layout article5Layout {
+	image banner (650, 9999, 102,960) {
+		'page-banner.png' ;
+	}
+
+	label _title 'Kickstarter kids: Watch these Seattle teens pitch their new camera dolly business idea' (50,120,520,90) { 
+			font 'TimesNewRomanPS-BoldMT' ; size 28 ; color rgb(216,76,0) ; Left ; lines 3 ;
+	} 
+		
+	web editorial (120, 230 , 450 , 480) {
+		load 'article5' ;
+	}
+
+	button next (650,900,100,30) { 
+		Custom ;
+		image 'next.png' ;
+		action next navigate top ;
+	}
+}
+
+layout ad1Layout {
+	
+	text adshare 'Change this text' (-100,-100,20,20)  { Left ; } 
+	
+	label firstNameL 'Time to get a real car ...' (100,70,200,30) { Left ; } 
+	text firstName (100,100,200,30) { Left ; } 
+
+    button shareOnTwitter (50,800,30,30) { 
+		Custom ;
+		image 'twitter.png' ;
+		action shareOnTwitter shareInformation adshare on twitter ;
+	}
+
+    button shareOn (50,850,30,30) { 
+		Custom ;
+		image 'facebook.png' ;
+		////action shareOnFacebook shareInformation adshare on facebook ;
+	}
+
+
+    button previous (50,900,100,30) { 
+		Custom ;
+		image 'previous.png' ;
+		action previous navigate back ;
+	}
+
+	button next (650,900,100,30) { 
+		Custom ;
+		image 'next.png' ;
+		action next navigate to article2View ;
+	}
+	
+	
+}
+
+layout ad2Layout {
+
+	text adshare 'Change this text' (-100,-100,20,20)  { Left ; } 
+
+	image bck (9999,120,300,768) { 'KidsCar.png' ; } 
+	
+	image picture (35,210,100,100) { action pickFromAlbum ; }
+
+
+    button shareOnTwitter (50,800,30,30) { 
+		Custom ;
+		image 'twitter.png' ;
+		action shareOnTwitter shareInformation adshare on twitter ;
+	}
+
+    button shareOn (50,850,30,30) { 
+		Custom ;
+		image 'facebook.png' ;
+		////action shareOnFacebook shareInformation adshare on facebook ;
+	}
+
+
+   button previous (50,900,100,30) { 
+		Custom ;
+		image 'previous.png' ;
+		action previous navigate back ;
+	}
+
+	button next (650,900,100,30) { 
+		Custom ;
+		image 'next.png' ;
+		action next navigate to article3View ;
+	}
+	
+	
+}
+
+layout ad3Layout {
+
+	text adshare 'Change this text' (-100,-100,20,20)  { Left ; } 
+
+    button shareOnTwitter (50,800,30,30) { 
+		Custom ;
+		image 'twitter.png' ;
+		action shareOnTwitter shareInformation adshare on twitter ;
+	}
+
+    button shareOnFacebook (50,850,30,30) { 
+		Custom ;
+		image 'facebook.png' ;
+		////action shareOnFacebook shareInformation adshare on facebook ;
+	}
+
+	
+   button previous (50,900,100,30) { 
+		Custom ;
+		image 'previous.png' ;
+		action previous navigate back ;
+	}
+
+	button next (650,900,100,30) { 
+		Custom ;
+		image 'next.png' ;
+		action next navigate to article4View ;
+	}
+	
+}
+
+layout ad4Layout {
+
+	text adshare 'Change this text' (-100,-100,20,20)  { Left ; } 
+
+    button shareOnTwitter (50,800,30,30) { 
+		Custom ;
+		image 'twitter.png' ;
+		action shareOnTwitter shareInformation adshare on twitter ;
+	}
+
+    button shareOnFacebook (50,850,30,30) { 
+		Custom ;
+		image 'facebook.png' ;
+		////action shareOnFacebook shareInformation adshare on facebook ;
+	}
+
+	
+   button previous (50,900,100,30) { 
+		Custom ;
+		image 'previous.png' ;
+		action previous navigate back ;
+	}
+
+	button next (650,900,100,30) { 
+		Custom ;
+		image 'next.png' ;
+		action next navigate to article5View ;
+	}
+	
+}
+
+view homeView 'Edito' uses user defaults {
+	color white ;
+	controls {
+		layout editoLayout ;
+	}
+} 
+
+view articlesView 'Articles' {
+	color white ;
+	controls {
+		layout articlesLayout ;
+	}
+	
+} 
+
+view article2View 'Article 2' {
+	color white ;
+	controls {
+		layout article2Layout ;
+	}
+	
+} 
+
+view ad1View 'Ad1' {
+	color white ;
+	controls {
+		layout ad1Layout bindings usergrid2 ;
+	}
+	
+} 
+
+view article3View 'Article 2' {
+	color white ;
+	controls {
+		layout article3Layout ;
+	}
+	
+} 
+
+view ad2View 'Ad1' {
+	color white ;
+	controls {
+		layout ad2Layout ;
+	}
+	hide bar ;
+	
+} 
+
+view article4View 'Article 2' {
+	color white ;
+	controls {
+		layout article4Layout ;
+	}
+	hide bar ;
+	
+} 
+
+view ad3View 'Ad1' {
+	color white ;
+	controls {
+		layout ad3Layout ;
+	}
+	hide bar ;
+	
+} 
+
+view article5View 'Article 2' {
+	color white ;
+	controls {
+		layout article5Layout ;
+	}
+	hide bar ;
+	
+} 
+
+view ad4View 'Ad1' {
+	color white ;
+	controls {
+		layout ad4Layout ;
+	}
+	hide bar ;	
+} 
+
+view twitterView '@geekwire' {
+	color white ;
+	controls {
+		layout twitterLayout bindings tweets ;
+	}
+} 
+
+view aboutView 'About' {
+	color white ;
+	controls {
+		layout aboutLayout ;
+	}
+	hide bar ;
+} 
+
+view teamView 'About' {
+	color white ;
+	controls {
+		layout teamLayout ;
+	}
+	hide bar ;
+} 
+
+view settingsView 'You' uses user defaults {
+	color white ;
+	controls {
+		layout settingsLayout bindings usergrid ;
+	}
+	hide bar ;
+} 
+
+main adz {
+	splashscreen 'gw.png' ;
+	navigationBar ;
+	start homeView ;
+	
+	menu { homeView , articlesView , twitterView , aboutView , settingsView } 
+	
+}

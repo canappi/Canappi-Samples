@@ -1,0 +1,69 @@
+package com.canappi.connectors.eventful ;
+
+connection events { 
+	operation init getEventsInSeattle GET 'http://api.evdb.com/rest/events/search?app_key=xQ36SDjPD89VF5zN&user=arno11&password=eve88024&location=Seattle' {
+       protocol HTTP ; resultSet 'events' ;
+   } ;
+}
+connection restaurants {
+	operation init getRestaurantsInSeattle GET 'http://api.evdb.com/rest/venues/search?app_key=xQ36SDjPD89VF5zN&user=arno11&password=eve88024&keywords=Restaurant&location=Seattle' {
+       protocol HTTP ; resultSet 'venues' ;
+   } ;
+
+}
+
+//This is the layout of the row of the event table
+layout restaurantInformation stacked {
+	text venue_name (20,5,280,25) {Left ; readOnly ;}
+	text venue_address (,30,280,25) { Left ; readOnly ;} 
+	text city_name (,55,100,25) {Left ; readOnly ;} 
+	text description (150,55,150,25) {Left ; readOnly ;} 
+}
+
+//This is the layout of the row of the event table
+layout eventInformation stacked {
+	text venue_name (20,5,280,25) {Left ; readOnly ;}
+	text venue_address (,30,280,25) { Left ; readOnly ;} 
+	text city_name (,55,100,25) {Left ; readOnly ;} 
+	text postal_code (150,55,100,25) {Left ; readOnly ;} 
+}
+
+//Event table (homeView)
+layout homeLayout stacked { 
+	table eventList{
+		eventInformation[];
+		rowHeight 85;
+	}
+}
+
+//Restaurant Table 
+layout restaurantsLayout stacked { 
+	table restaurantList{
+		restaurantInformation[];
+		rowHeight 85;
+	}
+}
+
+view restaurantView 'Restaurants in Seattle' {
+	color groupTableViewBackground ;
+	controls  {
+		layout restaurantsLayout bindings restaurants ;	
+	}
+	icon 'restaurant.png';
+}
+
+
+view homeView 'Events in Seattle' {
+	color groupTableViewBackground ;
+	controls  {
+		layout homeLayout bindings events ;	
+	}
+	icon 'home.png';
+}
+
+
+main eventful {
+	navigationBar ;
+	start homeView ;
+	menu {homeView, restaurantView }
+}

@@ -1,38 +1,5 @@
-package com.canappi.connectors.sample;
+package com.canappi.connectors.youtube;
 
-connection contactsDataSource { 
-	
-	//This is an on board data source
-	//This data source can be bound to a table for instance
-		{ "contacts" : [ 
-			{ "contact" : [ 
-				{ "country" : "Germany" }, 
-				{ "name" : "Arno RŸbel" }, 
-				{ "position" : "Director of Quality" }, 
-				{ "email" : "arno@canappi.com" }, 
-				{ "phone" : "+49 1234-5678" }, 
-				{ "mobile" : "+49 1234-5678" }, 
-				{ "fax" : "+49 1234-5678" } 
-				{ "picture" : "http://www.canappi.com/arno.png" } 
-		
-				]  
-			}
-		 	]   
-		}  ;
-}
-
-
-connection contactsXML {
-	operation init getContacts GET 'http://www.cloudsentinel.com/contacts.xml'{ 
-		protocol HTTP ; 
-	};
-}
-
-connection contactsJSON {
-	operation init getContacts GET 'http://www.cloudsentinel.com/contacts.json'{ 
-		protocol HTTP ; json ;
-	};
-}
 
 
 connection canappiTutorials { 
@@ -41,78 +8,56 @@ connection canappiTutorials {
 	} ;
 }
 
-mapping youTubeMapping {{"videoTitle":"title"},{"description":"content"}}
+mapping youTubeMapping {{"videoTitle":"title"},{"description":"content"},{"thumbnailYouTube":"media:group:url"},
+	{"url":"media:group:url"}
+}	
+
+
+layout youTubeRowIPad {
+	//The web control launches the YouTube video but it only works on a real device
+	//The simulator will display a red box instead of the YouTube video thumbnail
+	web thumbnailYouTube (5,5,240,180) { }
+	label videoTitle 'title' (280,5,400,40) { font 'Helvetica-Bold' ; size 22 ; color blue ; Left ; } 
+	label description 'content' (280,50,400,145) { font 'Helvetica-Oblique'; size 16 ; Left ; lines 4 ; } 
 	
-layout contactInformation stacked {
-	text firstname (20,5,280,25) { readOnly ;}
-	text email (,30,280,25) {readOnly ;} ;
 }
 
-layout homeLayout stacked { 
-	table contactList{contactInformation[];
-		rowHeight 80;
-		action selectContact navigate to contactDetailsView;}
+
+layout youTubeRow {
+	//The web control launches the YouTube video but it only works on a real device
+	//The simulator will display a red box instead of the YouTube video thumbnail
+	web thumbnailYouTube (5,5,80,60) { }
+	label videoTitle 'title' (90,3,225,25) { font 'Helvetica-Bold' ; Left ; } 
+	label description 'content' (90,30,225,70) { font 'Helvetica-Oblique'; Left ; lines 3 ; } 
+	
 }
 
-layout homeJSONLayout stacked { 
-	table contactListJSON {
-		contactInformation[];
-		rowHeight 80;
-		action selectContact navigate to contactDetailsView;}
-}
-
-layout tutorialRow {
-	label videoTitle 'title' (5,3,300,25) { Left ; } 
-	label description 'content' (5,30,300,70) { Left ; lines 3 ; } 
-}
-
-layout tutorialsLayout stacked { 
+layout youTubeLayoutIPad stacked { 
 	table tutorial {
-		tutorialRow[];
-		rowHeight 105;
+		youTubeRowIPad[];
+		rowHeight 200 ;
 	}
 }
 
 
-layout contactDetailsLayout stacked { 
-	
-	label nameLabel 'Name' (10,55,60,25) {Left;}
-	label emailLabel 'Email' (10,85,60,25) {Left;}
-	text firstname  (100,55,100,25) {Left; border bezel;}
-	text email  (100,85,100,25) {Left; border bezel;}
-	
-}
-
-view jsonView 'JSON' uses user defaults {
-	color groupTableViewBackground ;
-	controls stacked {
-		layout homeJSONLayout bindings contactsJSON;	
+layout youTubeLayout stacked { 
+	table tutorial {
+		youTubeRow[];
+		rowHeight 130;
 	}
+	tablet youTubeLayoutIPad ;
 }
 
-view homeView 'XML' uses user defaults {
-	color groupTableViewBackground ;
-	controls stacked {
-		layout homeLayout bindings contactsXML;	
-	}
-}
-
-view contactDetailsView 'Contact Details' {
-	color groupTableViewBackground ;
-	controls stacked {
-    	layout contactDetailsLayout bindings contactsJSON;
-     }
-}
 
 view youTubeView 'Tutorials' {
 	color groupTableViewBackground ;
 	controls stacked {
-    	layout tutorialsLayout bindings canappiTutorials;
+    	layout youTubeLayout bindings canappiTutorials mapping youTubeMapping;
      }
 }
 
 main DataConnection {
 	navigationBar ;
-	start homeView ;
-	menu {homeView, jsonView, contactDetailsView, youTubeView}
+	start youTubeView ;
+	menu { youTubeView }
 }

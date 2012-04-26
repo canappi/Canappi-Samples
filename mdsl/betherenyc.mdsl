@@ -1,0 +1,46 @@
+
+package com.canappi.connectors.beThere ;
+
+
+connection beThereAPI {
+	
+	operation init getEvents GET 'http://betherenyc.herokuapp.com/api/allevents/'  {
+		protocol HTTP ; json ; resultSet 'events' ;
+	}
+	
+}
+
+layout homeLayoutRow {
+
+	label _name '' (10,5,300,25) { color blue; Left ;}
+	label _date ''(10,30,100,25) { Left ; } 
+	label place '' (110,30,200,25) { Left ;}
+	label desc '' (10,55,300,50) { font 'Helvetica-Oblique' ; size 12 ; Left ; lines 3 ;}
+	label link '' (10,105,300,25) { font 'Helvetica' ; size 10 ; Left ;}
+}
+
+layout homeLayout {
+	table events {
+		homeLayoutRow[] ;
+		rowHeight 130 ;
+		action openLink openBrowser 'link' ;
+	}
+}
+
+view homeView 'Home' {
+	
+	controls {
+		layout homeLayout bindings beThereAPI ;
+	}
+	
+}
+
+main beThereApp {
+	
+	navigationBar ;
+	start homeView ;
+	
+	menu { homeView } 
+
+	debug ;
+}

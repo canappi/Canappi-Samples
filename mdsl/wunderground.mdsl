@@ -1,0 +1,76 @@
+package com.canappi.connectors.wunderground ;
+
+connection conditions {
+	operation init getConditionsForZip GET 'http://api.wunderground.com/api/6bbdb91ae64f10a5/conditions/q/${zip}.xml' zip {
+		protocol HTTP ; resultSet 'response' ('current_observation') ;
+	}
+}
+
+mapping conditionsMapping { 
+	{ 'zip' : 'zip'}, 
+	{'city' : 'display_location.full'}, 
+	{'localTime':'local_time_rfc822'}, 
+	{'weather':'weather'}, 
+	{'temperature':'temperature_string'}, 
+	{'humidity':'relative_humidity'}, 
+	{'windDir':'wind_dir'}, 
+	{'windSpeed':'wind_mph'}, 
+	{'visibility':'visibility_mi'}, 
+	{'UV':'UV'}, 
+	{'precipitation':'precip_1hr_string'}, 
+	{'conditionImage':'icon_url'}
+}
+
+layout conditionsLayout {
+	label conditions 'Conditions for' (20,50,150,30)  { Left ; }
+	text city (140,50,140,30) {  Left ; border rounded ; } 
+	label localTimeL 'Local time' (20,90,150,30)  { Left ; }
+	text localTime (140,90,140,30) {  Left ; border rounded ; } 
+	label weatherL 'Weather' (20,130,150,30)  { Left ; }
+	text weather (140,130,90,30) {  Left ; border rounded ; } 
+	image conditionImage (260,130,40,30) { '' ;}
+	label temperatureL 'Temperature' (20,170,150,30)  { Left ; }
+	text temperature (140,170,140,30) {  Left ; border rounded ; } 
+	label humidityL 'Humidity' (20,210,150,30)  { Left ; }
+	text humidity (140,210,140,30) {  Left ; border rounded ; } 
+	label windDirL 'Wind' (20,250,150,30)  { Left ; }
+	text windDir (140,250,70,30) {  Left ; border rounded ; } 
+	text windSpeed (220,250,60,30) {  Left ; border rounded ; } 
+	label visibilityL 'Visibility' (20,290,150,30)  { Left ; }
+	text visibility (140,290,140,30) {  Left ; border rounded ; } 
+	label UVL 'UV index' (20,330,150,30)  { Left ; }
+	text UV (140,330,140,30) {  Left ; border rounded ; } 
+	label precipitationL 'Precipitations' (20,370,150,30)  { Left ; }
+	text precipitation (140,370,140,30) {  Left ; border rounded ; } 
+}
+
+layout settingsLayout {
+	label enterZip 'Your Zip code' (20,120,150,30)  { Center ; }
+	text zip (140,120,100,30) {  Center ; border rounded ; } 
+	button updateZip 'Update' (80,250,160,30) { 
+		Gradient SimpleOrange ; 
+		action updateDefaults update defaults ;
+	} 	
+}
+
+view settingsView 'Settings' uses user defaults {
+	color white ;
+	controls {
+		layout settingsLayout ;
+	}
+}
+
+view conditionView 'Conditions' {
+	color white ;
+	controls {
+		layout conditionsLayout 
+			bindings conditions 
+			mapping conditionsMapping ;
+	}
+}
+
+main weatherApp {
+	navigationBar ;
+	start conditionView ;
+	menu { conditionView , settingsView }
+}

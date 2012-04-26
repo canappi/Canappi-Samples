@@ -1,0 +1,63 @@
+package com.canappi.connectors.googlep ;
+
+
+connection googleProfile {
+	operation init getProfile GET 'https://www.googleapis.com/plus/v1/people/102441104168824306827?key=AIzaSyDQxvbiMO2q5syS_2ZMMbPuD7ENe3ZrT9w&xml=true' {
+		protocol HTTP ; json ; wrapped ;
+	}
+}
+
+connection googleActivities {
+	operation init getActivity GET 'https://www.googleapis.com/plus/v1/people/102441104168824306827/activities/public?key=AIzaSyDQxvbiMO2q5syS_2ZMMbPuD7ENe3ZrT9w&xml=true' {
+		protocol HTTP ; json ; resultSet 'items' ;
+	}
+}
+
+layout homeLayout {
+	text displayName (20,100,200,30) { Left ; } 
+	text tagline (20,140,230,170) { Left ; lines 7 ; } 
+	image imageurl (260,100,50,50) { '' ; }
+}
+
+layout activityRowLayout {
+	web objecturl (9999,0,320,200) {
+		start 'http://www.google.com' ;
+	}
+	label actordisplayName '' (350,5,200,30) { Left ;}
+	label _title '' (350,35,400,30) { Left ;}
+	web objectcontent (350,65,400,130) { display '' ;}
+}
+
+layout activityLayout {
+	table activities {
+		activityRowLayout[] ;
+		rowHeight 200 ;
+	}
+}
+
+view activityView 'Activities' {
+	
+	controls {
+		layout activityLayout bindings googleActivities ; 
+	}
+	
+}
+
+
+view homeView 'Profile' {
+	
+	controls {
+		layout homeLayout bindings googleProfile ; 
+	}
+	
+}
+
+main googlep {
+	
+	navigationBar ;
+	network wifi ;
+	start homeView ;
+	
+	menu { homeView, activityView } 
+	
+}

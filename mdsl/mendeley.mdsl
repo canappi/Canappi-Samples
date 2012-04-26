@@ -1,0 +1,81 @@
+package com.canappi.connectors.mendeley ;
+
+connection search {
+	//Replace API_KEY with your app consumer key
+	operation getArticles GET 'http://api.mendeley.com/oapi/documents/search/${author}/?consumer_key={API_KEY}' author {
+		protocol HTTP ; json ;
+		timeout 60 ;
+		resultSet 'documents' ;
+	}
+}
+
+mapping bookMapping {
+	{"Product_Group_Title" : "title" },
+	{"publisher" : "publication_outlet" },
+	{"Author1" : "authors" },
+	{"url" : "mendeley_url"},
+	{"Product_Group_TitleIPad" : "title" },
+	{"publisherIPad" : "publication_outlet" },
+	{"Author1IPad" : "authors" },
+	{"urlIPad" : "mendeley_url"},
+	{"author" : "author"}
+}
+
+
+layout bookRowLayoutIPad {
+	label Product_Group_TitleIPad '' (115,3,400,30)  { color blue ; Left ; }
+	label publisherIPad '' (115,35,300,25)  { Left ; }
+	label Author1IPad '' (115,60,300,25)  { Left ; }
+	label urlIPad '' (-100,-100,10,10) { Left ;} 
+}
+
+layout booksRowLayout {
+	label Product_Group_Title '' (115,3,200,50)  { color blue ; Left ; lines 2 ; }
+	label publisher '' (115,55,150,25)  { Left ; }
+	label Author1 '' (115,80,300,25)  { Left ; }
+	label url '' (-100,-100,10,10) { Left ;} 
+}
+
+layout searchLayoutIPad {
+	label searchLabel 'Author name:' (20,100,120,30) { Left ; }
+	text author (140,100, 200, 30 ) { Left ; border rounded ; } 
+	button submit 'Search' (350,100,70,30) {
+		action search invokeOperation search getArticles ;
+	}
+	table booksIPad (9999,140,768,884) {
+		bookRowLayoutIPad[] ;
+		rowHeight 160 ;
+		action openURL openBrowser 'urlIPad' ;
+	}
+}
+
+layout searchLayout {
+	label searchLabel 'Author:' (5,55,120,30) { Left ; }
+	text author (70,55, 200, 30 ) { Left ; border rounded ; } 
+	button submit 'Search' (200,55,70,30) {
+		action search invokeOperation search getArticles ;
+	}
+	table books (9999,90,320,310) {
+		booksRowLayout[] ;
+		rowHeight 160 ;
+		action openURL openBrowser 'url' ;
+	}
+	
+	tablet searchLayoutIPad ;
+}
+
+view homeView 'Search' {
+	color white ;
+	controls {
+		layout searchLayout 
+			bindings search
+			mapping bookMapping  
+			 ;
+	}
+}
+
+main articleSearchApp {
+	navigationBar ;
+	start homeView ;
+	menu { homeView }
+}

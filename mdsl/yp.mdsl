@@ -26,7 +26,16 @@ connection ypSearch {
 	
 
 connection searchRestaurants {
-	operation init searchRestaurantsByZip GET 'http://api2.yp.com/listings/v1/search?format=xml&sort=distance&radius=5&term=restaurant&listingcount=10&key=5d0b448ba491c2dff5a36040a125df0a' searchloc {
+	operation init searchRestaurantsByZip 
+	GET 'http://api2.yp.com/listings/v1/search?format=xml&sort=distance&radius=5&term=restaurant&listingcount=10&key=5d0b448ba491c2dff5a36040a125df0a' searchloc {
+		resultSet 'searchListings' ;
+	} ;	
+}
+
+connection searchForRestaurants {
+	operation init searchRestaurants 
+	GET 'http://api2.yp.com/listings/v1/search?format=xml' 
+		radius,term, listingcount, searchloc {
 		resultSet 'searchListings' ;
 	} ;	
 }
@@ -79,7 +88,7 @@ mapping couponMapping {{ "couponDescription" : "coupons.couponDescription"},{"bu
 native String as medium string ;	
 	
 entity Customer {
-	name String ;
+	_name String ;
 }	
 	
 layout homeLayout {
@@ -150,15 +159,21 @@ layout homeLayout {
 }
 
 layout row {
-	label businessName 'name' (10,5,300,25) {font 'Helvetica-Bold' ; size 14; color blue ; Left ; } 
+	label businessName 'name' (10,5,300,25) {
+		font 'Helvetica-Bold' ; size 14; color blue ; Left ; 
+	} 
 	label latitude 'lat' (-40,5,20,25) {Left ; } 
 	label longitude 'long' (-80,5,20,25) {Left ; } 
 	label listingId 'id' (-120,5,20,25) {Left ; }
 	text phone (45,30,180,25) { Left ; }
-	button call '' (10,30,25,25) { image 'phone.png' ; action call phoneSomeone phone ; }
+	button call '' (10,30,25,25) { 
+		image 'phone.png' ; 
+		action call phoneSomeone phone ; 
+	}
 	label street 'id' (10,60,190,25) {Left ; }
-	label city 'id' (215,60,80,25) {font 'Helvetica-Oblique' ; size 10; Left ; }
-
+	label city 'id' (215,60,80,25) {
+		font 'Helvetica-Oblique' ; size 10; Left ; 
+	}
 }
 
 layout resultsLayout {
@@ -191,11 +206,7 @@ layout settingsLayout {
 	button updateZip 'Update' (80,250,160,40) { 
 		Gradient SimpleOrange ; 
 		action updateDefaults update defaults ;
-	} 
-	
-	//picker myPicker 'Pick..' (80,300,160,30) { 'picker.png' ; }
-	//picker myPicker2 'Pick..' (80,330,160,30) { 'picker.png' ; }
-	
+	} 	
 }
 
 view searchView 'Results' {
