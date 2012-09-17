@@ -1,0 +1,1384 @@
+package com.canappi.kitchensink2 ;   //May26
+
+
+connection tweets {
+	//Get Canappi's tweets
+	//------------------------------------------------------------------------------------
+	operation init getMyTweets GET 'https://twitter.com/statuses/user_timeline/metapgmr.xml' {
+		protocol HTTP ; 
+	}  
+	  
+}
+ 
+connection flickr {
+	//Get the thumbnails from a flickr gallery
+	//------------------------------------------------------------------------------------
+	operation init getPhotos GET 'http://api.flickr.com/services/rest/?method=flickr.galleries.getPhotos&api_key=b7639894a0158bb65256cdc41357946d&format=rest&gallery_id=74655121-72157628935723153' {
+		resultSet 'photos' ;
+		join getSizes on photo_id = id where _label = 'Square';
+	}
+
+	operation getSizes  GET 'http://api.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key=b7639894a0158bb65256cdc41357946d&format=rest' photo_id {
+		resultSet 'sizes' ;
+	}
+}
+
+connection flickr2 {
+	//Get the flickr picture selected from a thumbnail
+	//------------------------------------------------------------------------------------
+	operation init getPicture  GET 'http://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg' farm server _id secret  {
+		resultSet image 'photo' ('source') ;
+	}
+}
+
+connection contacts { 
+	
+	//This is an on board data source
+	//This data source can be bound to a table for instance
+	//------------------------------------------------------------------------------------
+		{ "contacts" : [ 
+			{ "contact" : [ 
+				{ "country" : "France" }, 
+				{ "name" : "Michel Serra" }, 
+				{ "position" : "Director of Quality" }, 
+				{ "email" : "michel@canappi.com" }, 
+				{ "phone" : "+33 1234-5678" }, 
+				{ "mobile" : "+33 1234-5678" }, 
+				{ "fax" : "+33 1234-5678" }, 
+				{ "picture" : "http://www.canappi.com/michel.png" } 
+		
+				]  
+			}
+		 	]   
+		}  ;
+}
+
+connection locationsDataSource { 
+	//This is an on board data source
+	//This data source can be bound to a map for instance
+	//------------------------------------------------------------------------------------
+		{ "locations" : [ 
+			{ "location" : [ 
+				{ "latitude" : "48.89000" }, 
+				{ "longitude" : "2.33000" }, 
+				{ "title" : "Ecole" }, 
+				{ "subtitle" : "12 Rue du Bois" } 
+		
+				]  
+			},
+			{ "location" : [ 
+				{ "latitude" : "48.89000" }, 
+				{ "longitude" : "2.34000" }, 
+				{ "title" : "Restaurant" }, 
+				{ "subtitle" : "345 Blvd Victor Hugo" } 
+		
+				]  
+			},
+			{ "location" : [ 
+				{ "latitude" : "48.90000" }, 
+				{ "longitude" : "2.33000" }, 
+				{ "title" : "Louvre" }, 
+				{ "subtitle" : "32 Rue de Rivoli" } 
+		
+				]  
+			},
+			{ "location" : [ 
+				{ "latitude" : "48.90000" }, 
+				{ "longitude" : "2.34000" }, 
+				{ "title" : "Musée d'Orsay" }, 
+				{ "subtitle" : "123 Bord de Seine" } 
+		
+				]  
+			}
+			
+		 	]   
+		}  ;
+}
+
+connection canappiTutorials { 
+	operation init getmyTubes GET 'https://gdata.youtube.com/feeds/api/users/canappi/uploads' {
+		protocol ATOM ; resultSet 'feed' ('entry') ; 
+	} ;
+}
+
+mapping youTubeMapping {{"videoTitle":"title"},{"description":"content"},{"thumbnailYouTube":"media:group:url"},
+	{"url":"media:group:url"}
+}
+	
+
+mapping twitterMapping { {"tweet":"text"} } 
+
+style titleStyle {
+	//A style can be reused across any number of label and text elements 
+	//------------------------------------------------------------------------------------
+	font 'Helvetica-Bold' ; size 22 ; color white ; backgroundColor black ; Left ;
+}
+
+style smallStyle {
+	font 'Helvetica' ; size 14 ; Left ;
+}
+
+style smallStyleIPad {
+	font 'Helvetica' ; size 18 ; Left ;
+}
+
+layout youTubeRowIPad {
+	//The web control launches the YouTube video but it only works on a real device
+	//The simulator will display a red box instead of the YouTube video thumbnail
+	web thumbnailYouTube (5,5,240,180) { }
+	label videoTitle 'title' (280,5,400,40) { font 'Helvetica-Bold' ; size 22 ; color blue ; Left ; } 
+	label description 'content' (280,50,400,145) { font 'Helvetica-Oblique'; size 16 ; Left ; lines 4 ; } 
+	
+}
+
+
+layout youTubeRow {
+	//The web control launches the YouTube video but it only works on a real device
+	//The simulator will display a red box instead of the YouTube video thumbnail
+	web thumbnailYouTube (5,5,80,60) { }
+	label videoTitle 'title' (90,3,225,25) { font 'Helvetica-Bold' ; Left ; } 
+	label description 'content' (90,30,225,70) { font 'Helvetica-Oblique'; Left ; lines 3 ; } 
+	
+}
+
+layout youTubeLayoutIPad stacked { 
+	table tutorial2 {
+		youTubeRowIPad[];
+		rowHeight 200 ;
+	}
+}
+
+
+layout youTubeLayout stacked { 
+	table tutorial {
+		youTubeRow[];
+		rowHeight 130;
+	}
+	tablet youTubeLayoutIPad ;
+}
+
+layout gradientButtonsMDSL {
+	web mdsl {
+		start 'http://www.canappi.com/ks/gradientButtons.html';
+	}
+}
+
+layout standardButtonsMDSL {
+	web mdsl {
+		start 'http://www.canappi.com/ks/standardButtons.html';
+	}
+}
+
+layout fontsMDSL {
+	web mdsl {
+		start 'http://www.canappi.com/ks/fonts.html';
+	}
+}
+
+layout imagesMDSL {
+	web mdsl {
+		start 'http://www.canappi.com/ks/images.html';
+	}
+}
+
+layout labelsMDSL {
+	web mdsl {
+		start 'http://www.canappi.com/ks/labels.html';
+	}
+}
+
+layout actionsMDSL {
+	web mdsl {
+		start 'http://www.canappi.com/ks/actions.html';
+	}
+}
+
+layout standardMapMDSL {
+	web mdsl {
+		start 'http://www.canappi.com/ks/standardMap.html';
+	}
+}
+
+layout hybridMapMDSL {
+	web mdsl {
+		start 'http://www.canappi.com/ks/hybridMap.html';
+	}
+}
+
+layout satelliteMapMDSL {
+	web mdsl {
+		start 'http://www.canappi.com/ks/satelliteMap.html';
+	}
+}
+
+layout playerMDSL {
+	web mdsl {
+		start 'http://www.canappi.com/ks/player.html';
+	}
+}
+
+layout pickersMDSL {
+	web mdsl {
+		start 'http://www.canappi.com/ks/pickers.html';
+	}
+}
+
+layout slidersMDSL {
+	web mdsl {
+		start 'http://www.canappi.com/ks/sliders.html';
+	}
+}
+
+layout galleryLayoutMDSL {
+	web mdsl {
+		start 'http://www.canappi.com/ks/galleryLayout.html';
+	}
+}
+
+layout textEntryLayoutMDSL {
+	web mdsl {
+		start 'http://www.canappi.com/ks/textEntryLayout.html';
+	}
+}
+
+layout browserURLMDSL {
+	web mdsl {
+		start 'http://www.canappi.com/ks/browserURL.html';
+	}
+}
+
+layout browserStringMDSL {
+	web mdsl {
+		start 'http://www.canappi.com/ks/browserString.html';
+	}
+}
+//This layout shows how to use different keyboard styles for specific text entries
+layout textEntryLayout {
+	 
+	text decimaltxt (100,50,160,30) { font 'Helvetica' ; size 10; color red ; Left ;  entry decimalEntry; border bezel; }
+	text emailtxt (,100,,) { font 'Helvetica' ; size 10; color blue ; Left ; entry emailEntry; border line ; } 
+	text numbertxt (,150,,) { 
+		size 10; 
+		color magenta ; 
+		backgroundColor magenta ; 
+		Left ;
+		entry numberEntry; 
+		border rounded ; 
+	} 
+	text phonetxt (,200,,) { style smallStyle ; entry phoneEntry;} 
+	text txttxt (,250,,) { style smallStyle ;entry textEntry; } 
+	text urltxt (,300,,) { style smallStyle ; entry urlEntry;}
+	 
+	 
+	label decimal 'decimal' (10,50,70,30) { style smallStyle ; }
+	label _email'email' (,100,,) { style smallStyle ;  } 
+	label number'number' (,150,,) { style smallStyle ;  } 
+	label phone 'phone'(,200,,) { style smallStyle ;  } 
+	label txt 'text'(,250,,) { style smallStyle ;  } 
+	label url 'url'(,300,,) { style smallStyle ;  } 
+	button info (280,370,20,20) {
+		action displayInfo navigate to textEntryLayoutMDSLView ;
+		InfoDark ;
+	}
+
+	button clearFields 'Clear' (40,370,40,20) {
+		action clearFields 
+			clearForm for phonetxt , txttxt, 
+			urltxt, numbertxt, emailtxt, decimaltxt ;
+	}
+	
+	tablet textEntryLayoutIPad ;
+}
+
+layout textEntryLayoutIPad {
+	 
+	text decimaltxt (100,50,160,30) { style smallStyleIPad ; color red ; entry decimalEntry; border bezel; }
+	text emailtxt (,100,,) { style smallStyleIPad ; color blue ; entry emailEntry; border line ; } 
+	text numbertxt (,150,,) { 
+		style smallStyleIPad ; 
+		color white ; 
+		backgroundColor magenta ; 
+		Left ;
+		entry numberEntry; 
+		border rounded ; 
+	} 
+	text phonetxt (,200,,) { style smallStyleIPad ; entry phoneEntry;} 
+	text txttxt (,250,,) { style smallStyleIPad ;entry textEntry; } 
+	text urltxt (,300,,) { style smallStyleIPad ; entry urlEntry;}
+	 
+	 
+	label decimal 'decimal' (10,50,70,30) { style smallStyleIPad ; }
+	label _email'email' (,100,,) { style smallStyleIPad ;  } 
+	label number'number' (,150,,) { style smallStyleIPad ;  } 
+	label phone 'phone'(,200,,) { style smallStyleIPad ;  } 
+	label txt 'text'(,250,,) { style smallStyleIPad ;  } 
+	label url 'url'(,300,,) { style smallStyleIPad ;  } 
+
+	web mdsl (350,45,350,500){
+		start 'http://www.canappi.com/ks/textEntryLayout.html';
+	}
+	
+	button clearFields 'Clear' (40,370,40,20) {
+		action clearFieldsIPad clearForm for phonetxt , txttxt, urltxt, numbertxt, emailtxt, decimaltxt ;
+	}
+	
+
+}
+
+
+layout actionLayout {
+	label description 'Please note, some standard actions do not work in the simulator ... ' (35,60,240,40) { 
+		color white ; Left ; lines 2 ; 
+	}
+	button sendUsAnEmail 'Send an email...' (50,120,220,40) { 
+		action sendUsAnEmail sendEmail 'info@canappi.com' ; 
+	}
+	button phoneAFriend 'Phone a friend...' (50,170,220,40) { 
+		action phoneAFriend phoneSomeone '425-555-1212' ; 
+	}
+	button openCanappi 'Open browser...' (50,220,220,40) { 
+		action openCanappiHomePage openBrowser 'http://www.canappi.com' ; 
+	}
+	button navigateHome 'Navigate to a view...' (50,270,220,40) { 
+		action navigateHome  navigate to homeView ; 
+	}
+	button showAlertMessage 'Show a dialog ...' (50,320,220,40) { 
+		action showAlertMessage  showAlert 'Alert' and 'This is a message' ('Cancel','Ok')  ; 
+	}
+
+	button info (280,370,20,20) {
+		action displayActionLayout navigate to actionsMDSL;
+		InfoLight;
+	}
+	tablet actionLayoutIPad ;
+}
+
+layout actionLayoutIPad {
+	label description 'Please note, some standard actions do not work in the simulator ... ' (35,60,240,40) { 
+		color white ; Left ; lines 2 ; 
+	}
+	button sendUsAnEmail 'Send an email...' (50,120,220,40) { 
+		action sendUsAnEmail sendEmail 'info@canappi.com' ; 
+	}
+	button phoneAFriend 'Phone a friend...' (50,170,220,40) { 
+		action phoneAFriend phoneSomeone '425-555-1212' ; 
+	}
+	button openCanappi 'Open browser...' (50,220,220,40) { 
+		action openCanappiHomePage openBrowser 'http://www.canappi.com' ; 
+	}
+	button navigateHome 'Navigate to a view...' (50,270,220,40) { 
+		action navigateHome  navigate to homeView ; 
+	}
+	button showAlertMessage 'Show a dialog ...' (50,320,220,40) { 
+		action showAlertMessage  showAlert 'Alert' and 'This is a message' ('Cancel','Ok')  ; 
+	}
+
+	web mdsl (350,45,350,500){
+		start 'http://www.canappi.com/ks/actions.html';
+	}
+	
+}
+
+
+//Button GradientStyle:
+layout gradientButtonLayout {
+	 
+ 	button mybutton 'Gradient Alert' (10,50,250,30){
+ 		Gradient Alert; 
+ 		font 'Courier-Oblique';
+ 		size 16;
+ 		color gray;
+ 	} 
+	button mybutton1 'Gradient Black' (10,100,,40) {
+		Gradient Black;
+		font 'Helvetica-Bold';
+ 		size 20;
+ 		color white ;
+	} 
+	button mybutton2 'Gradient WhiteActionSheet' (10,150,,30){Gradient WhiteActionSheet;   } 
+	button mybutton3 'Gradient RedDelete' (10,200,,30){Gradient RedDelete;   } 
+	button mybutton4 'Gradient BlackActionSheet' (10,250,,30){Gradient BlackActionSheet;    } 
+	button mybutton5 'Gradient GreenConfirm' (10,300,,30){Gradient GreenConfirm;   }
+	button mybutton6 'Gradient SimpleOrange' (10,350,,30){Gradient SimpleOrange;   }
+	button mybutton7 'Gradient White' (10,400,,30){Gradient White;   }
+		button info (280,370,20,20) {
+		action displayInfo navigate to gradientButtonsMDSL;
+		InfoLight;
+	}
+	
+	tablet gradientButtonLayoutIPad ;
+}
+
+layout gradientButtonLayoutIPad {
+	 
+ 	button mybutton 'Gradient Alert' (20,50,250,30){
+ 		Gradient Alert; 
+ 		font 'Courier-Oblique';
+ 		size 16;
+ 		color gray;
+ 	} 
+	button mybutton1 'Gradient Black' (,100,,40) {
+		Gradient Black;
+		font 'Helvetica-Bold';
+ 		size 20;
+ 		color white ;
+	}  
+	button mybutton2 'Gradient WhiteActionSheet' (,150,,30){Gradient WhiteActionSheet;   } 
+	button mybutton3 'Gradient RedDelete' (,200,,30){Gradient RedDelete;   } 
+	button mybutton4 'Gradient BlackActionSheet' (,250,,30){Gradient BlackActionSheet;    } 
+	button mybutton5 'Gradient GreenConfirm' (,300,,30){Gradient GreenConfirm;   }
+	button mybutton6 'Gradient SimpleOrange' (,350,,30){Gradient SimpleOrange;   }
+
+	web mdsl (350,45,350,500){
+		start 'http://www.canappi.com/ks/gradientButtons.html';
+	}
+
+}
+
+
+//'Button  StandardImage:'
+layout standardButtonLayout  {
+	  
+ 	button mybutton 'Custom' (30,50,100,30){
+ 		Custom;
+ 		image 'custom1.png';
+ 		selectedImage 'custom2.png';
+ 		font 'Courier-Oblique';
+ 		size 16;
+ 		color gray;
+ 	}
+	button mybutton1 'Bordered' (,100,100,30){Bordered;   roundedCorner(8.0);}
+	button mybutton2 'InfoLight' (,150,200,30){InfoLight;}
+	button mybutton3 'InfoDark' (,200,200,30){InfoDark;}
+	button mybutton5 'DetailDisclosure' (,250,,30){DetailDisclosure;}
+	button mybutton6 'ContactAdd' (,300,,30){ContactAdd;} 
+	
+	button info (280,370,20,20) {
+		action displayInfo navigate to standardButtonsMDSL;
+		InfoLight;
+	}
+	
+	button add 'New' (280,370,20,20) {
+		Navbar ;
+		action displayInfo2 navigate to standardButtonsMDSL;
+	}
+	
+	tablet standardButtonLayoutIPad ;
+}
+
+layout standardButtonLayoutIPad  {
+	  
+ 	button mybutton 'Custom' (30,50,100,30){
+ 		Custom;
+ 		image 'custom1.png';
+ 		selectedImage 'custom2.png';
+ 		font 'Courier-Oblique';
+ 		size 16;
+ 		color gray;
+ 	}
+	button mybutton1 'Bordered' (,100,100,30){Bordered;   roundedCorner(8.0);}
+	button mybutton2 'InfoLight' (,150,200,30){InfoLight;}
+	button mybutton3 'InfoDark' (,200,200,30){InfoDark;}
+	button mybutton5 'DetailDisclosure' (,250,,30){DetailDisclosure;}
+	button mybutton6 'ContactAdd' (,300,,30){ContactAdd;} 
+	
+	web mdsl (350,45,350,500) {
+		start 'http://www.canappi.com/ks/standardButtons.html';
+	}
+	
+	button add 'New' (280,370,20,20) {
+		Navbar ;
+		action displayInfo3 navigate to standardButtonsMDSL;
+	}
+	
+	
+}
+
+
+
+layout pickersLayout {
+	
+	picker myPicker 'Pick a color' (50,55,200,28) {
+		components 1;
+		rows 5 ;
+		data [['blue','white','red','green','yellow']] ;
+	}
+	
+	text eventTitle (50,100,280,30)  { Left ; placeholder 'Enter the event title' ; border rounded ;}
+	
+	
+	datepicker myDatePicker (50,140,280,30) as popup {
+		time;
+		action addEvent ;
+		border rounded ;
+		
+	}
+	
+	
+	checkbox myCheckbox (50,200,100,30) { label '    checkbox' ; color black ;  } 
+	
+	radiobutton r1 ('1') (50,240,,) {
+		label '    email' ; selected ; color black ;
+	}
+	radiobutton r2 ('2') (,280,,) {
+		label '    phone' ; color black ;
+	}
+	radiobutton r3 ('3') (,320,,) {
+		label '    sms' ; color black ;
+	}
+		
+	button info (280,370,20,20) {
+		action displayInfo navigate to pickersMDSL;
+		InfoDark ;
+	}
+	
+ 	
+ }		
+ 
+layout contactLayout {
+	table contacts {
+		contactRow[] ;
+		rowHeight 205;
+		selection Gray;
+		cell Subtitle ;
+	}
+}
+
+layout contactRow {
+	label country 'country' (5,5,80,30) { style smallStyle ; }
+	label name 'name' (5,30,280,30) { style smallStyle ; font 'Helvetica-Bold' ; Left ; }  
+	label position 'position' (5,60,280,30) { style smallStyle ; Left ; } 
+	label _email 'email' (5,90,280,30) { style smallStyle ; Left ; } 
+	label mobile 'mobile' (5,120,280,30) { font 'Courier' ; Left ; } 
+	image picture 'test' (200,15,80,100) { 'arno.png' ; roundedCorner(8.0) ; } 
+}
+
+	//client
+layout labelLayout {
+	image myBckgnd (10,160,300,100) {
+		roundedCorner (8) ;
+		border white (2) ;
+	}
+	label client1 'left' (30,55,80,28){font 'helvetica';size 16;color red;Left;}
+	label emailclient1 'middle' (,85,,28){font 'helvetica';size 16;color white; Center;}
+	label client2 'right' (,115,,) {font 'helvetica';size 16;color orange;}
+	label emailclient2 'This is a multi-line label' (30,170,60,60) {font 'helvetica';size 16;color green; Left; lines 3 ;}
+	
+	text clienttxt1 (120,55,110,28) {font 'helvetica';size 12 ; color blue; backgroundColor red; Bottom; border bezel; }
+	text emailtxt1 (,85,110,28){font 'helvetica';size 12;color black;Center;border rounded;}
+	text clienttxt2 (,115,,) {font 'helvetica';size 12;color brown;border line;}
+	text emailtxt2 'this is a multi-line text field' (,170,110,80){font 'helvetica';size 15;color cyan; backgroundColor clear ; Left; lines 3 ; border rounded;}	
+
+	button info (280,370,20,20) {
+		action displayInfo navigate to labelsMDSL;
+		InfoLight;
+	}
+	
+	tablet labelLayoutIPad ;
+}
+
+layout labelLayoutIPad {
+	image myBckgnd (10,160,300,100) {
+		roundedCorner (8) ;
+		border white (2) ;
+	}
+	label client1 'left' (30,55,80,28){font 'helvetica';size 16;color red;Left;}
+	label emailclient1 'middle' (,85,,28){font 'helvetica';size 16;color white; Center;}
+	label client2 'right' (,115,,) {font 'helvetica';size 16;color orange;}
+	label emailclient2 'This is a multi-line label' (30,170,60,60) {font 'helvetica';size 16;color green; Left; lines 3 ;}
+	
+	text clienttxt1 (120,55,110,28) {font 'helvetica';size 12 ; color blue; backgroundColor red; Bottom; border bezel; }
+	text emailtxt1 (,85,110,28){font 'helvetica';size 12;color black;Center;border rounded;}
+	text clienttxt2 (,115,,) {font 'helvetica';size 12;color brown;border line;}
+	text emailtxt2 'this is a multi-line text field' (,170,110,80){font 'helvetica';size 15;color cyan; backgroundColor clear ; Left; lines 3 ; border rounded;}	
+
+	web mdsl (350,45,350,500) {
+		start 'http://www.canappi.com/ks/labels.html';
+	}
+
+}
+
+//Let's try different fonts
+layout fontLayout {
+	label arialHebrew 'Arial Hebrew 16' (10,55,180,28){font 'ArialHebrew';size 16;color white;Bottom;   }
+	label helvetica 'Helvetica 16' (10,85,,28){font 'helvetica';size 16;color green; Center;  }
+	label italic 'Courier-Oblique 16' (,115,,) {font 'Courier-Oblique';size 16;color purple; Top ; }
+	label multiLine 'This is a multiline lavel with helvetica 8. It allows you to display entire paragraphs. (Helvetica 10)' (,150,,50) {font 'helvetica';size 10;color cyan;Right;lines 3;}
+	
+	text clienttxt1 (10,200,200,28) {font 'ArialHebrew';size 12;color green; backgroundColor scrollViewTexturedBackground ; Middle;   border rounded;}
+	text emailtxt1 (,240,,28){font 'helvetica';size 12;color cyan; backgroundColor scrollViewTexturedBackground ; Center;border rounded;}
+	text clienttxt2 (,280,,) {font 'helvetica';size 8;color brown; backgroundColor scrollViewTexturedBackground ; Right;border rounded;}
+	text emailtxt2 (,320,,80){font 'Helvetica-Bold';size 20;color orange; Top; lines 2; border rounded;}
+
+	button info (280,370,20,20) {
+		action displayInfo navigate to fontsMDSL;
+		InfoLight;
+	}
+	
+	tablet fontLayoutIPad ;
+	
+}	
+
+layout fontLayoutIPad {
+	label arialHebrew 'Arial Hebrew 16' (10,55,180,28){font 'ArialHebrew';size 16;color white;Bottom;   }
+	label helvetica 'Helvetica 16' (10,85,,28){font 'helvetica';size 16;color green; Center;  }
+	label italic 'Courier-Oblique 16' (,115,,) {font 'Courier-Oblique';size 16;color purple; Top ; }
+	label multiLine 'This is a multiline lavel with helvetica 8. It allows you to display entire paragraphs. (Helvetica 10)' (,150,,50) {font 'helvetica';size 10;color cyan;Right;lines 3;}
+	
+	text clienttxt1 (10,200,200,28) {font 'ArialHebrew';size 12;color green; backgroundColor scrollViewTexturedBackground ; Middle;   border rounded;}
+	text emailtxt1 (,240,,28){font 'helvetica';size 12;color cyan; backgroundColor scrollViewTexturedBackground ; Center;border rounded;}
+	text clienttxt2 (,280,,) {font 'helvetica';size 8;color brown; backgroundColor scrollViewTexturedBackground ; Right;border rounded;}
+	text emailtxt2 (,320,,80){font 'Helvetica-Bold';size 20;color orange; Top; lines 2; border rounded;}
+
+	web mdsl (350,45,350,500) {
+		start 'http://www.canappi.com/ks/fonts.html';
+	}
+	
+}	
+	
+layout sliderLayout {
+	
+	slider mySlider (60,200,200,20) {
+		min 0 ;
+		max 50.5 ;
+		step 2.0 ;
+		initialValue 25.0;
+		action sendTheSliderValue ;
+	}
+
+	slider myRedSlider (60,260,200,20) {
+		min 0 ;
+		max 50.5 ;
+		step 2.0 ;
+		initialValue 25.0;
+		trackColor red ;
+		thumbColor red ;
+		action sendTheRedSliderValue ;
+	}
+	
+	switch mySwitch (40,100,80,40) {
+		on ;
+		action switchThis navigate to labelView ;		
+	}
+	
+	switch myRedSwitch (200,100,80,40) {
+		
+		on ;
+		color red ;
+		action switchThis2 navigate to labelView ;	
+			
+	}
+	
+
+	button info (280,370,20,20) {
+		action displayInfo navigate to slidersMDSL;
+		InfoLight;
+	} 
+
+}
+
+layout playerLayout {
+	
+	button playTutorial 'Play' (10,50,80,30) {
+		//action playTutorial playMovie myPlayer ;
+	}
+	
+	player myPlayer (10,100,300,170) {
+		play (1) ;
+		load 'mdsl.m4v';
+	}
+	
+	button info (280,370,20,20) {
+		action displayInfo navigate to playerMDSL;
+		InfoLight;
+	}
+	tablet playerLayoutIPad ;
+}
+
+layout playerLayoutIPad {
+	
+	button playTutorial 'Play' (30,50,80,30) {
+		//action playTutorial playMovie myPlayer ;
+	}
+	
+	player myPlayer (30,120,650,370) {
+		
+		load 'mdsl.m4v';
+	}
+	
+	web mdsl (30,650,500,200) {
+		start 'http://www.canappi.com/ks/images.html';
+	}
+	
+}
+
+
+layout imageLayout {
+	  
+	image picture1 (20,60,90,190) {
+		'picture1.png' ;
+	}
+	label balsamiq 'Canappi allows to create mdsl files directly from mockup tools!' (180,60,120,120) { color white ; Left ; lines 6;}
+	label roundedPicture 'A picture with Rounded Corners and a border' (180,170,120,120) { color white ; Left ; lines 6;}
+	image picture2 (20,260,280,140) {
+		'picture2.png' ;
+		roundedCorner (8) ;
+		border lightGray (3) ;
+	}
+	
+	button info (280,55,20,20) {
+		action displayInfo navigate to imagesMDSL;
+		InfoLight;
+	}
+	tablet imageLayoutIPad ;
+}
+
+layout imageLayoutIPad {
+	  
+	image picture1 (20,60,90,190) {
+		'picture1.png' ;
+	}
+	label balsamiq 'Canappi allows to create mdsl files directly from mockup tools!' (180,60,120,120) { color white ; Left ; lines 6;}
+	label roundedPicture 'A picture with Rounded Corners and a border' (180,170,120,120) { color white ; Left ; lines 6;}
+	image picture2 (20,260,280,140) {
+		'picture2.png' ;
+		roundedCorner (8) ;
+		border lightGray (3) ;
+	}
+	
+	web mdsl (350,45,350,500) {
+		start 'http://www.canappi.com/ks/images.html';
+	}
+	
+}
+
+
+
+layout webStringLayout {
+	 web mdslIntro {
+ 		display '<p>m|dsl is a new kind of programming language, a solution programming language (SPL). It focuses  on describing a solution in a technology and architecture independent way.</p><p>At Canappi we believe that information system construction should be easy. Developers and architects should be allowed to spend more time with domain experts to understand their requirements and deliver the best solution possible, as fast as possible.</p>' ;	
+ 	}
+ 	
+ 	button info (280,370,20,20) {
+		action displayInfo navigate to browserStringMDSL;
+		InfoDark;
+	}
+ 			
+}
+
+
+layout webURLLayout {
+	
+	web canappiWebSite {
+ 		start 'http://www.canappi.com/' ;
+ 	}
+ 	
+ 	button info (280,370,20,20) {
+		action displayInfo navigate to browserURLMDSL;
+		InfoDark;
+	}
+ 	
+ }		
+
+layout aboutLayout {
+	 web about {
+ 		display '<h2>Canappi v1.4</h2><br/>April 2012<br/><br/><p>We are pleased to introduce Canappi release 1.4. <a href=\\"http://www.canappi.com\\">Canappi</a> is an Application Development Hub which greatly simplified the development of Converged Mobile Applications.</p><br/><br/><img src=\\"http://www.canappi.com/files/logo-dark.png\\" width=\\"180\\"/><p>(C) Convergence Modeling LLC</p>' ;
+ 	
+ 	}		
+}
+
+layout parisLayout {
+	//Push Pin example
+	map myMap {
+		Satellite ;
+		area 0.2 , 0.2; 
+		location 48.89364,2.33739 ('Paris','France'); 
+	}
+	
+	button info (280,370,20,20) {
+		action displayInfo navigate to standardMapMDSL;
+		InfoLight;
+	}
+	
+}
+
+
+layout westSamoaLayout {
+	
+	map myMap {
+		Hybrid ;
+		area 1,1; 
+		location -13.75903,-172.10463 ; //thats West Samoa
+	}
+	
+	button info (280,370,20,20) {
+		action displayInfo navigate to standardMapMDSL;
+		InfoLight;
+	}
+	
+}
+
+
+layout bellevueLayout {
+	
+	map myMap {
+		Standard ;
+		show user ;
+		area 1.0, 1; 
+		location 47.6105556,-122.1994444 ; 
+	}
+	
+	text toAddress '451+University+Avenue+Palo+Alto+CA' (-100,-100,10,10) { Left ; }
+
+	button directions 'Directions' (20,360,100,30) {
+		Bordered ;
+		action displayDrivingDirections showDirection toAddress from current location ;
+	}
+	
+	
+	button info (280,370,20,20) {
+		action displayInfo navigate to standardMapMDSL;
+		InfoLight;
+	}
+	
+}
+
+layout firstLevelMenu {
+	table buttonMenu as menu {
+		rowHeight 40 ;
+		stripes blue ;
+		accessory detail ;
+		menuitem 'Browser' { action displayBrowser navigate to webMenu ; }  
+		menuitem 'Buttons' { action displayGradientButtons navigate to buttonView ; }  
+		menuitem 'Fonts' { action displayFonts navigate to fontView ; }  
+		menuitem 'Gallery' { action displayGallery navigate to flickrView ; }  
+		menuitem 'Images' { action displayImages navigate to ImagesView ; }  
+		menuitem 'Labels' { action displayLabels navigate to labelView ; }  
+		menuitem 'Maps' { action displayMaps navigate to mapMenuView ; }  
+		menuitem 'Player' { action displayPlayer navigate to playerView ; }  
+		menuitem 'Pickers' { action displayPickers navigate to pickersView ; }  
+		menuitem 'Slider' { action displaySlider navigate to sliderView ; }  
+		menuitem 'Table' { action displayTable navigate to contactView ; }  
+		menuitem 'Text' { action displayText navigate to textEntryView ; }  
+		menuitem 'Standard Actions' { action displayBrowser navigate to actionView ; }  
+	}
+}
+
+
+layout buttonLayout {
+	table buttonMenu as menu {
+		rowHeight 40 ;
+		menuitem 'Gradient Buttons' { action displayGradientButtons navigate to gradientButtonView ; }  
+		menuitem 'Standard Buttons' { action displayGradientButtons navigate to standardButtonView ; }  
+	}
+}
+
+layout webMenuLayout {
+	table webMenu as menu {
+		rowHeight 40 ;
+		menuitem 'Display HTML string' { action displayGradientButtons navigate to webStringView ; }  
+		menuitem 'Display URL' { action displayGradientButtons navigate to webURLView ; }  
+	}
+}
+
+layout mapLayout {
+	table mapMenu as menu {
+		rowHeight 40 ;
+		menuitem 'Standard Map' { action displayGradientButtons navigate to belleView ; }  
+		menuitem 'Hybrid Map' { action displayGradientButtons navigate to westSamoaView ; }  
+		menuitem 'Satellite Map' { action displayGradientButtons navigate to parisView ; }  
+	}
+}
+
+layout twitterRowIPad {
+	image iconForWords	 (9999,9999,766,60) 
+		{ 'bck1.png' ;
+			 binding tweet 
+	  		[	{ 'droid' 			: 'bck2.png' },
+	  			{ 'iPhone'			: 'bck3.png' },
+	  			{ 'MDE'				: 'bck4.png' },
+				{ 'latform' 		: 'bck5.png' } 
+			] ;  
+		} 
+
+	label tweet '' (100,10,600,50) { color blue ; Left ; lines 2 ; } 
+	 
+}
+
+layout twitterRow {
+	label tweet '' (5,10,300,50) { color blue ; Left ; lines 2 ; } 
+	 
+}
+
+layout twitterLayoutIPad {
+	table twitterTable2 {
+		twitterRowIPad[] ;
+		rowHeight 60 ;
+		//This action looks at the content of the control 'tweet' in the table row
+		//and opens the corresponding URL if there is one
+		action openUrl openBrowser 'tweet' ;
+	}
+}
+
+layout twitterLayout {
+	table twitterTable {
+		twitterRow[] ;
+		rowHeight 60 ;
+		//This action looks at the content of the control 'tweet' in the table row
+		//and opens the corresponding URL if there is one
+		action openUrl openBrowser 'tweet' ;
+	}
+	
+	tablet twitterLayoutIPad ;
+}
+
+layout flickrPhotoLayout {
+
+	text _title '' (10,50,300,30) { style titleStyle ; without bindings ;  } 
+	image source (10,80) { }
+
+	text _width '' (-100,-100,20,20) { } 
+	text _height '' (-100,-100,20,20) { } 
+	text _label '' (-100,-100,20,20) { } 
+	text _media '' (-100,-100,20,20) { } 
+	text owner '' (-100,-100,20,20) { } 
+	text secret '' (-100,-100,20,20) { } 
+	text farm '' (-100,-100,20,20) { } 
+	text server '' (-100,-100,20,20) { } 
+	text _id '' (-100,-100,20,20) { } 
+
+}
+
+layout flickrThumbnail {
+	//A thumbnail (source) with a series of hidden parameters
+	//------------------------------------------------------------------------------------
+	image source (12,12,75,75) {
+
+	} 
+	//Hidden parameters used to retrievethe picture
+	//Note that all parameter declarations _XXX correspond to reserved keywords in mdsl
+	// _width is used as "width" in the generated code
+	//------------------------------------------------------------------------------------
+	text _width '' (-100,-100,20,20) { } 
+	text _height '' (-100,-100,20,20) { } 
+	text _label '' (-100,-100,20,20) { } 
+	text _media '' (-100,-100,20,20) { } 
+	text owner '' (-100,-100,20,20) { } 
+	text secret '' (-100,-100,20,20) { } 
+	text farm '' (-100,-100,20,20) { } 
+	text server '' (-100,-100,20,20) { } 
+	text _title '' (-100,-100,20,20) { } 
+	text _id '' (-100,-100,20,20) { } 
+}
+
+layout flickrLayout {
+	//A gallery control which displays the thumbnails of a picture in a flick gallery
+	//The action navigates to a view which consumes id, secret, server and farm values
+	//to retrieve the picture. Note that since id is a reserved keyword it is declared as _id
+	//------------------------------------------------------------------------------------
+	gallery flickr (10,55,300,320) {
+		flickrThumbnail[] ; 
+		cellHeight 100 ;
+		cellWidth 100 ; 
+		action displayPicture navigate to flickrPhotoView with _id, secret, server, farm, _title ;
+	}
+	
+	button info (280,370,20,20) {
+		action displayInfo navigate to galleryMDSLView;
+		InfoLight;
+	}
+	
+	tablet flickrLayoutIPad ;
+	
+}
+
+layout flickrLayoutIPad {
+	//A gallery control which displays the thumbnails of a picture in a flick gallery
+	//The action navigates to a view which consumes id, secret, server and farm values
+	//to retrieve the picture. Note that since id is a reserved keyword it is declared as _id
+	//------------------------------------------------------------------------------------
+	gallery flickr (10,55,300,320) {
+		flickrThumbnail[] ; 
+		cellHeight 100 ;
+		cellWidth 100 ; 
+		action displayPicture navigate to flickrPhotoView with _id, secret, server, farm, _title ;
+	}
+	
+	web mdsl (350,45,350,500){
+		start 'http://www.canappi.com/ks/galleryLayout.html';
+	}
+	
+}
+
+view gradientButtonsMDSL 'MDSL'{
+	scroll bounces  ;
+	color groupTableViewBackground ;
+	controls {
+		layout gradientButtonsMDSL; 
+	}
+}
+
+view standardButtonsMDSL 'MDSL'{
+	scroll bounces  ;
+	color groupTableViewBackground ;
+	controls {
+		layout standardButtonsMDSL; 
+	}
+}
+
+view fontsMDSL 'MDSL'{
+	scroll bounces  ;
+	color groupTableViewBackground ;
+	controls {
+		layout fontsMDSL; 
+	}
+}
+
+view labelsMDSL 'MDSL'{
+	scroll bounces  ;
+	color groupTableViewBackground ;
+	controls {
+		layout labelsMDSL; 
+	}
+}
+
+view imagesMDSL 'MDSL'{
+	scroll bounces  ;
+	color groupTableViewBackground ;
+	controls {
+		layout imagesMDSL; 
+	}
+}
+
+view standardMapMDSL 'MDSL'{
+	scroll bounces  ;
+	color groupTableViewBackground ;
+	controls {
+		layout standardMapMDSL; 
+	}
+}
+
+view hybridMapMDSL 'MDSL'{
+	scroll bounces  ;
+	color groupTableViewBackground ;
+	controls {
+		layout hybridMapMDSL; 
+	}
+}
+
+view satelliteMapMDSL 'MDSL'{
+	scroll bounces  ;
+	color groupTableViewBackground ;
+	controls {
+		layout satelliteMapMDSL; 
+	}
+}
+
+view playerMDSL 'MDSL'{
+	scroll bounces  ;
+	color groupTableViewBackground ;
+	controls {
+		layout playerMDSL; 
+	}
+}
+
+view pickersMDSL 'MDSL'{
+	scroll bounces  ;
+	color groupTableViewBackground ;
+	controls {
+		layout pickersMDSL; 
+	}
+}
+
+
+view slidersMDSL 'MDSL'{
+	scroll bounces  ;
+	color groupTableViewBackground ;
+	controls {
+		layout slidersMDSL; 
+	}
+}
+
+view browserStringMDSL 'MDSL'{
+	scroll bounces  ;
+	color groupTableViewBackground ;
+	controls {
+		layout browserStringMDSL; 
+	}
+}
+
+view actionsMDSL 'MDSL'{
+	scroll bounces  ;
+	color groupTableViewBackground ;
+	controls {
+		layout actionsMDSL; 
+	}
+}
+
+view browserURLMDSL 'MDSL'{
+	scroll bounces  ;
+	color groupTableViewBackground ;
+	controls {
+		layout browserURLMDSL; 
+	}
+}
+
+view galleryMDSLView 'MDSL'{
+	scroll bounces  ;
+	color scrollViewTexturedBackground ;
+	controls {
+		layout galleryLayoutMDSL; 
+	}
+}
+
+view textEntryLayoutMDSLView 'MDSL'{
+	scroll bounces  ;
+	color scrollViewTexturedBackground ;
+	controls {
+		layout textEntryLayoutMDSL; 
+	}
+}
+
+
+view mapMenuView 'Maps' {
+	controls {
+		layout mapLayout ; 
+	}
+}
+
+view webStringView 'Web View with String' {
+	controls {
+		layout webStringLayout ; 
+	}
+}
+
+view webURLView 'Web View with URL' {
+	controls {
+		layout webURLLayout ; 
+	}
+}
+
+view standardButtonView 'Standard Buttons' {
+	color scrollViewTexturedBackground ;
+	controls {
+		layout standardButtonLayout ;
+	}
+	back 'back';
+}
+
+
+view fontView 'Fonts' {
+	scroll 700 bounces ;
+	color scrollViewTexturedBackground ;
+	controls {
+		layout fontLayout ;
+	}
+	hide tabs ;
+	//title font 'Papyrus' ; size 22 ; color orange ; shadow black ;
+}
+
+
+view labelView 'Labels' {
+	color scrollViewTexturedBackground ;
+	controls {
+		layout labelLayout ;
+	}
+}
+
+view sliderView 'Sliders' {
+	color scrollViewTexturedBackground ;
+	controls {
+		layout sliderLayout ;
+	}
+}
+
+view playerView 'Player' {
+	color scrollViewTexturedBackground ;
+	controls {
+		layout playerLayout ;
+	}
+}
+
+view ImagesView 'Images' {
+	color scrollViewTexturedBackground ;
+	controls {
+		layout imageLayout ;
+	}
+}
+
+view textEntryView 'Text Entry Keyboard'{
+	scroll bounces  ;
+	color scrollViewTexturedBackground ;
+	controls {
+		layout textEntryLayout; 
+	}
+}
+
+
+view gradientButtonView 'Gradient Style Buttons'{
+	scroll bounces  ;
+	color scrollViewTexturedBackground ;
+	controls {
+		layout gradientButtonLayout;
+	}
+}
+
+view standardButtonView2 'Standard Buttons'{
+	scroll bounces ; 
+	color lightGray;
+	controls {
+		layout standardButtonLayout ;
+	}
+}
+
+view pickersView 'Pick'{
+	color white;
+	controls {
+		layout pickersLayout ;
+	}
+}
+		
+view detailView 'Contact' {
+	color groupTableViewBackground ;
+	controls {
+		 layout contactRow bindings contacts  ;
+	}
+	
+}
+
+view contactView 'Contacts' {
+	color scrollViewTexturedBackground ;
+	controls {
+		layout contactLayout bindings contacts ;
+	}
+}
+		
+view buttonView 'Button Views' {
+	color scrollViewTexturedBackground ;
+	controls {
+		layout buttonLayout ;
+	}
+}
+
+view parisView 'Paris'{
+	controls {
+		layout parisLayout bindings locationsDataSource ; 
+	}
+}
+
+view westSamoaView 'West Samoa'{
+	color yellow;
+	controls {
+		layout westSamoaLayout;
+	}
+}
+
+view belleView 'Bellevue'{
+	controls {
+		layout bellevueLayout;		
+	}
+}
+
+view webMenu 'Browser Views' {
+	controls {
+		layout webMenuLayout ;
+	}
+}
+
+//Home view, displays the first level menu
+
+view homeView 'Kitchen Sink' {
+	controls {
+		layout firstLevelMenu ;
+	}
+	icon 'home.png' ;
+}
+
+//About view
+
+view aboutView 'About ...' {
+	controls {
+		layout aboutLayout ;
+	}
+	icon 'about.png' ;
+}
+
+view actionView 'Standard Actions' {
+	//Displays a Listof standard actions supported by Canappi 
+	//------------------------------------------------------------------------------------
+	color scrollViewTexturedBackground ;
+	controls {
+		layout actionLayout ; 
+	}
+}
+
+view youTubeView 'Tutorials' {
+	//Displays a YouTube channel 
+	//------------------------------------------------------------------------------------
+	color groupTableViewBackground ;
+	controls stacked {
+    	layout youTubeLayout bindings canappiTutorials mapping youTubeMapping ;
+     }
+     icon 'tv.png';
+}
+
+view twitterView 'Twitter' {
+	//Displays list of tweets 
+	//------------------------------------------------------------------------------------
+	controls {
+		layout twitterLayout 
+			bindings tweets 
+			mapping twitterMapping ;
+	}
+	icon 'twitter.png' ;
+}
+
+
+view flickrView   'Album'  {
+	//Displays a flickr gallery 
+	//------------------------------------------------------------------------------------
+		color black ;
+		controls {
+			layout flickrLayout 
+				bindings flickr ; 
+		}
+
+		hide tabs ;
+		back 'Back';
+}
+
+view flickrPhotoView   'Album'  {
+	//Displays a flickr picture 
+	//------------------------------------------------------------------------------------  
+		color black ;
+		controls {
+			layout flickrPhotoLayout 
+				bindings flickr2 ; 
+		}
+
+		hide tabs;
+		back 'Back';
+}
+
+// The Main element
+
+main kitchensink2 {
+	
+	//splashscreen 'canappi.png' ;
+	navigationBar (rgb(168,200,30)) ; 
+	
+	//We now define the main menu of the applications 
+	//and the view where the application will start
+	start twitterView;
+	menu (black) { 
+		homeView, 
+		youTubeView , 
+		twitterView , 
+		aboutView
+	}
+	
+	version '1.4.0' { build '09152012' ;   }
+	
+	//The code is generated with Logging statements
+	debug;
+}
